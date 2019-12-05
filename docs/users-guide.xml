@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article id="TEI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude"  xsi:noNamespaceSchemaLocation='http://www.docbook.org/xsd/4.4/docbook.xsd'>
+<articleinfo>
+        <author>
+            <firstname>Conal</firstname>
+            <surname>Tuohy</surname>
+        </author>
+        <copyright>
+            <year>2019</year>
+            <holder>Conal Tuohy</holder>
+        </copyright>
+
+        <legalnotice>
+            <title>Legal Notice</title>
+
+            <para>Permission is granted to copy, distribute and/or modify this
+            document under the terms of the GNU Free Documentation License,
+            Version 1.1 or any later version published by the Free Software
+            Foundation; with no <quote>Invariant Sections</quote>,
+            <quote>Front-Cover Texts</quote> or <quote>Back-Cover Texts</quote>,
+            each as defined in the license. A copy of the license is included in
+            the file <filename>COPYING.DOC.txt</filename> included with the
+            jEdit distribution.</para>
+        </legalnotice>
+        <title>jEdit TEI Plugin</title>
+</articleinfo>
+<section>
+        <title>Introduction</title>
+
+        <indexterm>
+            <primary>TEI</primary>
+        </indexterm>
+
+        <para>This plugin provides tools for text encoding using an XML vocabulary called
+        Text Encoding for Interchange (TEI).</para>
+
+        <para>For more information about TEI, visit the <ulink url="https://tei-c.org/">website
+        of the <orgname>Text Encoding Initiative Consortium</orgname></ulink>. </para>
+</section>
+<section>
+        <title>Operation</title>
+
+        <para><indexterm>
+                <primary>TEI</primary>
+
+                <secondary>shortcut keys</secondary>
+            </indexterm>The TEI plugin provides the following keyboard shortcuts</para>
+</section>
+<section>
+        <title>Toolbar buttons</title>
+
+        <para>The TEI toolbar contains the following buttons:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para>The <guilabel>Update TEI Package</guilabel> button
+                downloads a package of TEI-related files from the TEI 
+                Consortium's website.
+                To specify a different location to download the package from,
+                use the <link
+                linkend="options">options dialog</link>.</para>
+            </listitem>
+
+            <listitem>
+                <para>The <guilabel>New TEI file from template</guilabel> button
+                opens a hierarchical menu of TEI template files, provided by the TEI package. 
+                Selecting one of the templates will create a new document based on the selected template.</para>
+            </listitem>
+
+        </itemizedlist>
+
+        <para>These operations are also listed in the menu which appears for
+        TEI under the <guimenu>Plugins</guimenu> heading. </para>
+
+</section>
+<section id="options">
+        <title>Options</title>
+
+        <indexterm>
+            <primary>TEI</primary>
+
+            <secondary>options</secondary>
+        </indexterm>
+
+        <para>There are two options which can be set using the pane for
+        TEI in the <guilabel>Plugin Shortcuts</guilabel> section of the
+        general options dialog:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para>The <guilabel>Auto-update TEI package</guilabel> checkbox causes the TEI Plugin
+                to check for updates to the TEI package and download them automatically.</para>
+            </listitem>
+
+            <listitem>
+                <para>The <guilabel>TEI package update URL</guilabel> field specifies the location of a metadata
+                resource which lists the avaiable versions of the TEI package. When the TEI Consortium updates
+                the package metadata resource to point to a new package, the TEI Plugin will download and install the new package.</para>
+            </listitem>
+
+        </itemizedlist>
+</section>
+<section>
+        <title>Legal notices</title>
+
+        <para>The TEI plugin is released under the GNU General Public
+        License (either version 2 or any later version, at the user's option). A
+        copy of the GPL is available in the <filename>COPYING.txt</filename>
+        file in the jEdit distribution.</para>
+
+        <para>The TEI plugin comes with ABSOLUTELY NO WARRANTY OF ANY
+        KIND; see section 11 and 12 of the GPL for details.</para>
+
+        <para>Permission is granted to copy, distribute and/or modify this
+        document under the terms of the GNU Free Documentation License, Version
+        1.1 or any later version published by the Free Software Foundation; with
+        no <quote>Invariant Sections</quote>, <quote>Front-Cover Texts</quote>
+        or <quote>Back-Cover Texts</quote>, each as defined in the license. A
+        copy of the license is included in the file
+        <filename>COPYING.DOC.txt</filename> included with the jEdit
+        distribution.</para>
+</section>
+<section>
+        <title>Feedback</title>
+
+        <para>Comments, bug reports and other feedback may be sent to the jEdit-users
+        mailing list.</para>
+</section>
+</article>

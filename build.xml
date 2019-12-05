@@ -1,0 +1,51 @@
+
+<project name="TEI" default="build">
+	<description>
+    This is an ant build.xml file for building the TEI plugin for jEdit.
+  </description>
+
+  <!-- One of these two property files below should define build.support to point to 
+       a checkout of the build-support project:
+       svn co https://jedit.svn.sourceforge.net/svnroot/jedit/build-support/trunk
+  -->
+	<property file="build.properties"/>
+	<property file="../build.properties"/>
+	<property file="TEI.props"/>
+	<property name="src.dir" value="." />
+	<property name="user-doc.xml" location="users-guide.xml"/>
+	<import file="${build.support}/plugin-build.xml" />
+	
+	<!-- "build.prepare" target contains extra tasks in preparation for the main "build" target in the "plugin-build.xml" build file -->
+	<target name="build.prepare">
+		<sequential>
+			<!-- find and download the current TEI package from the Consortium -->
+			<mkdir dir="build"/>
+			<get skipexisting="true" src="${options.tei.package-url}" dest="build/package-metadata.xml"/>
+			<xslt in="build/package-metadata.xml" out="tei-package-location.props" style="find-latest-tei-package.xsl"/>
+			<property file="tei-package-location.props"/>
+			<get skipexisting="true" src="${tei-package-location}" dest="package.zip"/>
+		</sequential>
+	</target>
+	<path id="project.class.path">
+  <!--
+        <!- External dependencies ->
+        <pathelement path="${jedit.jars}/ant.jar"/>
+        <!- Other plugin dependencies ->
+        -->
+		<pathelement path="${jedit.user.home}/jars/saxon9he.jar"/>
+		<pathelement path="${jedit.user.home}/jars/EclipseIcons.jar"/>
+        <!--
+        <pathelement path="${jedit.user.jars}/Console.jar"/>
+        <pathelement path="${jedit.user.jars}/ErrorList.jar"/>
+        <pathelement path="${jedit.user.jars}/ProjectViewer.jar"/>
+        <pathelement path="${jedit.user.jars}/CommonControls.jar"/>
+        -->
+	</path>
+    
+	<!-- Extra files that should be included in the jar -->
+	<selector id="packageFiles">
+		<or>
+			<filename name="package.zip" />
+		</or>
+	</selector>
+</project>

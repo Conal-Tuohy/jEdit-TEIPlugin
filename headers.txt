@@ -1,0 +1,559 @@
+== Info:   Trying 134.158.38.106...
+== Info: TCP_NODELAY set
+== Info: Connected to www.tei-c.org (134.158.38.106) port 443 (#0)
+== Info: ALPN, offering http/1.1
+== Info: successfully set certificate verify locations:
+== Info:   CAfile: /etc/ssl/certs/ca-certificates.crt
+  CApath: /etc/ssl/certs
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.3 (OUT), TLS handshake, Client hello (1):
+=> Send SSL data, 512 bytes (0x200)
+0000: ..........t..Wi.R.....zC....sU.V4.+s:s .J.......@2...A.8..=.v..N
+0040: V.. ..Z.>.......,.0.........+./...$.(.k.#.'.g.....9.....3.....=.
+0080: <.5./.....u.........www.tei-c.org........................3t.....
+00c0: ....http/1.1...........0........................................
+0100: .........+............-.....3.&.$... m?.z.H48KO..Pr.X......=....
+0140: f...............................................................
+0180: ................................................................
+01c0: ................................................................
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....p
+== Info: TLSv1.3 (IN), TLS handshake, Server hello (2):
+<= Recv SSL data, 112 bytes (0x70)
+0000: ...l...\6.4'=.......b/\..$4-.-.Z..\... .2T..).;[.....U.....!3"0M
+0040: ....`)..0..$............................http/1.1
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (IN), TLS handshake, Certificate (11):
+<= Recv SSL data, 2560 bytes (0xa00)
+0000: .........]0..Y0..A.........I.....Ml.$....K0...*.H........0J1.0.
+0040: ..U....US1.0...U....Let's Encrypt1#0!..U....Let's Encrypt Author
+0080: ity X30...191026210648Z..200124210648Z0.1.0...U....tei-c.org0.."
+00c0: 0...*.H.............0.........S....n.......s.j....1Zk.,_5.......
+0100: +...A.(............K...N..I..yk*....x....u..t.=...C.2.x..=.....
+0140: EC^..*.r./.Q......H!!.....|.B.....'W...1......o,B9....6Wws.`?;]7
+0180: .J,ma...../.2..../........&.M..b..o.E}..t....c....).2 e...a.E?..
+01c0: ..5..)..0^.uO..{}M....:K.-.MC........m0..i0...U...........0...U.
+0200: %..0...+.........+.......0...U.......0.0...U...... y.^R....v'..-
+0240: ).T...0...U.#..0....Jjc.}....9..Ee.....0o..+........c0a0...+....
+0280: .0.."http://ocsp.int-x3.letsencrypt.org0/..+.....0..#http://cert
+02c0: .int-x3.letsencrypt.org/0#..U....0...tei-c.org..www.tei-c.org0L.
+0300: .U. .E0C0...g.....07..+..........0(0&..+.........http://cps.lets
+0340: encrypt.org0.....+.....y............v....Y....@.-/....K..G....4.
+0380: .....s...n.........G0E. q..".....).8.i..^..(..p&..<..Nu_.!..(...
+03c0: .E..n.....Z......2.... ....v...\..}h.....#....W|W..j..a:.i.....
+0400: .n.........G0E.!..=Y..X:..V....X..[..!....o....... &..k......D/*
+0440: '.W.A..h..6.uC(3..K0...*.H.............!PJM....y.x...@.o2..E...V
+0480: ....^JCz4S..K.*..f.....N[....+...bx..R...5....8DZ..\...:..&..\o.
+04c0: ....r....@.6..=.D..9b.....I.$A...........\k..f........6.....~.89
+0500: '...l4.h~~..#.F.s[...9......+.<.w.L....e.....x...;.$hXs.9!./\..l
+0540: .....^..E.O^.!....&.J..nf.J....v......K...0...0..z.........AB...
+0580: S.sj.....0...*.H........0?1$0"..U....Digital Signature Trust Co.
+05c0: 1.0...U....DST Root CA X30...160317164046Z..210317164046Z0J1.0..
+0600: .U....US1.0...U....Let's Encrypt1#0!..U....Let's Encrypt Authori
+0640: ty X30.."0...*.H.............0............Z..G.r]7..hc0..5&.%...
+0680: 5.p./..KA....5.X..*.h....u....bq.y.`.......xgq.i........`<H.~.Mw
+06c0: .$.G.Z....7....{....J..A.6....m<.h.#*B...tg....Ra..?e.......V..
+0700: ...?.......k...}.+.e...6u.k.J...Ix/..O* %)..t..1..18....3.C....0
+0740: .y1.=-6....3j.91......d.3...).....}..........}0..y0...U.......0
+0780: .......0...U...........0..+........s0q02..+.....0..&http://isrg
+07c0: .trustid.ocsp.identrust.com0;..+.....0../http://apps.identrust.c
+0800: om/roots/dstrootcax3.p7c0...U.#..0.......{,q...K.u...`...0T..U. 
+0840: .M0K0...g.....0?..+..........000...+........"http://cps.root-x1.
+0880: letsencrypt.org0<..U...50301./.-.+http://crl.identrust.com/DSTRO
+08c0: OTCAX3CRL.crl0...U.......Jjc.}....9..Ee.....0...*.H.............
+0900: .3...cX8.....U.vV.pH.iG'{.$...Z.J.)7$tQ.bh...pg....N(Q.........Z
+0940: ......j.j.>W#....b.......?..H....eb..T..*. .........2...w..ye.+.
+0980: (.:.R..R.._....3.wl.@.2...\A.tl[]._3.M..8./{,b....o%./...F=.~..z
+09c0: ...zm..%......./X../,h&.K........CJ.DNosz(...n{L}.....D....4[.B
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....m
+== Info: TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+<= Recv SSL data, 365 bytes (0x16d)
+0000: ...i...a.S..dQlpKV...{{.q.....y..Q......."Is.;q.... ...D.SN..\.
+0040: ...v...*......#./p.M.tDi>S$.....?..y.=.........Y......fb.....d.
+0080: .`Kp..V.>...........Z..z7.N.D%us..v]E....k...........k..".R\....
+00c0: .B...wO<....h.....T.(:..X^-.X......9......R1e1..$3z.P...>p......
+0100: ._.....9.<.,...Qp[.m..Kb........ .f]B..DN.O&.\(.....!&...Qb....%
+0140: ..Q.r..g...M9..]....E.."0......@x*P....K.....
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (IN), TLS handshake, Server finished (14):
+<= Recv SSL data, 4 bytes (0x4)
+0000: ....
+=> Send SSL data, 5 bytes (0x5)
+0000: ....f
+== Info: TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+=> Send SSL data, 102 bytes (0x66)
+0000: ...ba./....{.....l.m..w......Q.1...35_k.a..".u..$J..*,.S.....[.Q
+0040: .........6+.6...#....M.!....OI/......
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (OUT), TLS change cipher, Client hello (1):
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send SSL data, 5 bytes (0x5)
+0000: ....(
+== Info: TLSv1.2 (OUT), TLS handshake, Finished (20):
+=> Send SSL data, 16 bytes (0x10)
+0000: ....<8....7.e..O
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....(
+== Info: TLSv1.2 (IN), TLS handshake, Finished (20):
+<= Recv SSL data, 16 bytes (0x10)
+0000: .....m..f.T.M.B.
+== Info: SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+== Info: ALPN, server accepted to use http/1.1
+== Info: Server certificate:
+== Info:  subject: CN=tei-c.org
+== Info:  start date: Oct 26 21:06:48 2019 GMT
+== Info:  expire date: Jan 24 21:06:48 2020 GMT
+== Info:  subjectAltName: host "www.tei-c.org" matched cert's "www.tei-c.org"
+== Info:  issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
+== Info:  SSL certificate verify ok.
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+=> Send header, 174 bytes (0xae)
+0000: GET /release/oxygen/updateSite.oxygen HTTP/1.1
+0030: Host: www.tei-c.org
+0045: User-Agent: jEdit TEI Plugin
+0063: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/
+00a3: *;q=0.8
+00ac: 
+<= Recv SSL data, 5 bytes (0x5)
+0000: ...@.
+<= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+<= Recv header, 22 bytes (0x16)
+0000: Server: nginx/1.10.3
+<= Recv header, 37 bytes (0x25)
+0000: Date: Wed, 20 Nov 2019 06:02:12 GMT
+<= Recv header, 40 bytes (0x28)
+0000: Content-Type: application/octet-stream
+<= Recv header, 23 bytes (0x17)
+0000: Content-Length: 26008
+<= Recv header, 46 bytes (0x2e)
+0000: Last-Modified: Fri, 19 Jul 2019 22:03:11 GMT
+<= Recv header, 24 bytes (0x18)
+0000: Connection: keep-alive
+<= Recv header, 23 bytes (0x17)
+0000: ETag: "5d323e1f-6598"
+<= Recv header, 22 bytes (0x16)
+0000: Accept-Ranges: bytes
+<= Recv header, 2 bytes (0x2)
+0000: 
+<= Recv data, 16128 bytes (0x3f00)
+0000: <?xml version="1.0" encoding="UTF-8"?>.<xt:extensions xmlns:xt="
+0040: http://www.oxygenxml.com/ns/extension".               xmlns:xsi=
+0080: "http://www.w3.org/2001/XMLSchema-instance".               xsi:s
+00c0: chemaLocation="http://www.oxygenxml.com/ns/extension http://www.
+0100: oxygenxml.com/ns/extension/extensions.xsd">.    .   .   .   .   
+0140: .   .   .   .   <xt:extension id="tei">.      <xt:location href=
+0180: "https://jenkins.tei-c.org/job/oxygen-tei-stable/10/artifact/oxy
+01c0: gen-tei/oxygen-tei-3.5.0-7.47.0.zip"/>.      <xt:version>3.5.4</
+0200: xt:version>.        <xt:oxy_version xmlns:local="http://teijenki
+0240: ns.hcmc.uvic.ca/ns">18.0+</xt:oxy_version>.        <xt:type>fram
+0280: ework</xt:type>.        <xt:author>TEI Technical Council</xt:aut
+02c0: hor>.        <xt:name>TEI P5 (development build)</xt:name>.     
+0300:    .        <xt:license>...These material is dual-licensed:..1. 
+0340: Distributed under a Creative Commons Attribution 3.0.Unported Li
+0380: cense http://creativecommons.org/licenses/by/3.0/ ..2. http://ww
+03c0: w.opensource.org/licenses/BSD-2-Clause....All rights reserved...
+0400: Redistribution and use in source and binary forms, with or witho
+0440: ut.modification, are permitted provided that the following condi
+0480: tions are.met:..* Redistributions of source code must retain the
+04c0:  above copyright.notice, this list of conditions and the followi
+0500: ng disclaimer...* Redistributions in binary form must reproduce 
+0540: the above copyright.notice, this list of conditions and the foll
+0580: owing disclaimer in the.documentation and/or other materials pro
+05c0: vided with the distribution...This software is provided by the c
+0600: opyright holders and contributors."as is" and any express or imp
+0640: lied warranties, including, but not.limited to, the implied warr
+0680: anties of merchantability and fitness for.a particular purpose a
+06c0: re disclaimed. In no event shall the copyright.holder or contrib
+0700: utors be liable for any direct, indirect, incidental,.special, e
+0740: xemplary, or consequential damages (including, but not.limited t
+0780: o, procurement of substitute goods or services; loss of use,.dat
+07c0: a, or profits; or business interruption) however caused and on a
+0800: ny.theory of liability, whether in contract, strict liability, o
+0840: r tort.(including negligence or otherwise) arising in any way ou
+0880: t of the use.of this software, even if advised of the possibilit
+08c0: y of such damage....</xt:license>.      .      .      .      .  
+0900:     .      .      .      <xt:description>DEVELOPMENT BUILD of th
+0940: e Oxygen TEI plugin.            based on the current trunk versi
+0980: ons of TEI P5 and the .            TEI Stylesheets.Jenkins build
+09c0:  number: 2019-05-06-241910..          Use this only if you are t
+0a00: esting the ..      plugin. To avoid conflict with builtin framew
+0a40: ork, please ensure that..      you have gone to Preferences-&gt;
+0a80: Document Type Association in..      oXygen and deactivated all t
+0ac0: he TEI frameworks..      that have "External" in the storage col
+0b00: umns..        </xt:description>.   </xt:extension>.   <xt:extens
+0b40: ion id="tei">.      <xt:location href="https://jenkins.tei-c.org
+0b80: /job/oxygen-tei-stable/11/artifact/oxygen-tei/oxygen-tei-3.5.0-7
+0bc0: .47.0.zip"/>.      <xt:version>3.5.5</xt:version>.        <xt:ox
+0c00: y_version xmlns:local="http://teijenkins.hcmc.uvic.ca/ns">18.0+<
+0c40: /xt:oxy_version>.        <xt:type>framework</xt:type>.        <x
+0c80: t:author>TEI Technical Council</xt:author>.        <xt:name>TEI 
+0cc0: P5 (development build)</xt:name>.        .        <xt:license>..
+0d00: .These material is dual-licensed:..1. Distributed under a Creati
+0d40: ve Commons Attribution 3.0.Unported License http://creativecommo
+0d80: ns.org/licenses/by/3.0/ ..2. http://www.opensource.org/licenses/
+0dc0: BSD-2-Clause....All rights reserved...Redistribution and use in 
+0e00: source and binary forms, with or without.modification, are permi
+0e40: tted provided that the following conditions are.met:..* Redistri
+0e80: butions of source code must retain the above copyright.notice, t
+0ec0: his list of conditions and the following disclaimer...* Redistri
+0f00: butions in binary form must reproduce the above copyright.notice
+0f40: , this list of conditions and the following disclaimer in the.do
+0f80: cumentation and/or other materials provided with the distributio
+0fc0: n...This software is provided by the copyright holders and contr
+1000: ibutors."as is" and any express or implied warranties, including
+1040: , but not.limited to, the implied warranties of merchantability 
+1080: and fitness for.a particular purpose are disclaimed. In no event
+10c0:  shall the copyright.holder or contributors be liable for any di
+1100: rect, indirect, incidental,.special, exemplary, or consequential
+1140:  damages (including, but not.limited to, procurement of substitu
+1180: te goods or services; loss of use,.data, or profits; or business
+11c0:  interruption) however caused and on any.theory of liability, wh
+1200: ether in contract, strict liability, or tort.(including negligen
+1240: ce or otherwise) arising in any way out of the use.of this softw
+1280: are, even if advised of the possibility of such damage....</xt:l
+12c0: icense>.      .      .      .      .      .      .      .      .
+1300:       <xt:description>DEVELOPMENT BUILD of the Oxygen TEI plugin
+1340: .            based on the current trunk versions of TEI P5 and t
+1380: he .            TEI Stylesheets.Jenkins build number: 2019-05-06
+13c0: -244411..          Use this only if you are testing the ..      
+1400: plugin. To avoid conflict with builtin framework, please ensure 
+1440: that..      you have gone to Preferences-&gt;Document Type Assoc
+1480: iation in..      oXygen and deactivated all the TEI frameworks..
+14c0:       that have "External" in the storage columns..        </xt:
+1500: description>.   </xt:extension>.   <xt:extension id="tei">.     
+1540:  <xt:location href="https://jenkins.tei-c.org/job/oxygen-tei-sta
+1580: ble/12/artifact/oxygen-tei/oxygen-tei-3.5.0-7.47.0.zip"/>.      
+15c0: <xt:version>3.5.6</xt:version>.        <xt:oxy_version xmlns:loc
+1600: al="http://teijenkins.hcmc.uvic.ca/ns">18.0+</xt:oxy_version>.  
+1640:       <xt:type>framework</xt:type>.        <xt:author>TEI Techni
+1680: cal Council</xt:author>.        <xt:name>TEI P5 (development bui
+16c0: ld)</xt:name>.        .        <xt:license>...These material is 
+1700: dual-licensed:..1. Distributed under a Creative Commons Attribut
+1740: ion 3.0.Unported License http://creativecommons.org/licenses/by/
+1780: 3.0/ ..2. http://www.opensource.org/licenses/BSD-2-Clause....All
+17c0:  rights reserved...Redistribution and use in source and binary f
+1800: orms, with or without.modification, are permitted provided that 
+1840: the following conditions are.met:..* Redistributions of source c
+1880: ode must retain the above copyright.notice, this list of conditi
+18c0: ons and the following disclaimer...* Redistributions in binary f
+1900: orm must reproduce the above copyright.notice, this list of cond
+1940: itions and the following disclaimer in the.documentation and/or 
+1980: other materials provided with the distribution...This software i
+19c0: s provided by the copyright holders and contributors."as is" and
+1a00:  any express or implied warranties, including, but not.limited t
+1a40: o, the implied warranties of merchantability and fitness for.a p
+1a80: articular purpose are disclaimed. In no event shall the copyrigh
+1ac0: t.holder or contributors be liable for any direct, indirect, inc
+1b00: idental,.special, exemplary, or consequential damages (including
+1b40: , but not.limited to, procurement of substitute goods or service
+1b80: s; loss of use,.data, or profits; or business interruption) howe
+1bc0: ver caused and on any.theory of liability, whether in contract, 
+1c00: strict liability, or tort.(including negligence or otherwise) ar
+1c40: ising in any way out of the use.of this software, even if advise
+1c80: d of the possibility of such damage....</xt:license>.      .    
+1cc0:   .      .      .      .      .      .      .      .      <xt:de
+1d00: scription>DEVELOPMENT BUILD of the Oxygen TEI plugin.           
+1d40:  based on the current trunk versions of TEI P5 and the .        
+1d80:     TEI Stylesheets.Jenkins build number: 2019-05-06-245911..   
+1dc0:        Use this only if you are testing the ..      plugin. To a
+1e00: void conflict with builtin framework, please ensure that..      
+1e40: you have gone to Preferences-&gt;Document Type Association in.. 
+1e80:      oXygen and deactivated all the TEI frameworks..      that h
+1ec0: ave "External" in the storage columns..        </xt:description>
+1f00: .   </xt:extension>.   <xt:extension id="tei">.      <xt:locatio
+1f40: n href="https://jenkins.tei-c.org/job/oxygen-tei-stable/13/artif
+1f80: act/oxygen-tei/oxygen-tei-3.5.0-7.47.0.zip"/>.      <xt:version>
+1fc0: 3.5.7</xt:version>.        <xt:oxy_version xmlns:local="http://t
+2000: eijenkins.hcmc.uvic.ca/ns">18.0+</xt:oxy_version>.        <xt:ty
+2040: pe>framework</xt:type>.        <xt:author>TEI Technical Council<
+2080: /xt:author>.        <xt:name>TEI P5 (development build)</xt:name
+20c0: >.        .        <xt:license>...These material is dual-license
+2100: d:..1. Distributed under a Creative Commons Attribution 3.0.Unpo
+2140: rted License http://creativecommons.org/licenses/by/3.0/ ..2. ht
+2180: tp://www.opensource.org/licenses/BSD-2-Clause....All rights rese
+21c0: rved...Redistribution and use in source and binary forms, with o
+2200: r without.modification, are permitted provided that the followin
+2240: g conditions are.met:..* Redistributions of source code must ret
+2280: ain the above copyright.notice, this list of conditions and the 
+22c0: following disclaimer...* Redistributions in binary form must rep
+2300: roduce the above copyright.notice, this list of conditions and t
+2340: he following disclaimer in the.documentation and/or other materi
+2380: als provided with the distribution...This software is provided b
+23c0: y the copyright holders and contributors."as is" and any express
+2400:  or implied warranties, including, but not.limited to, the impli
+2440: ed warranties of merchantability and fitness for.a particular pu
+2480: rpose are disclaimed. In no event shall the copyright.holder or 
+24c0: contributors be liable for any direct, indirect, incidental,.spe
+2500: cial, exemplary, or consequential damages (including, but not.li
+2540: mited to, procurement of substitute goods or services; loss of u
+2580: se,.data, or profits; or business interruption) however caused a
+25c0: nd on any.theory of liability, whether in contract, strict liabi
+2600: lity, or tort.(including negligence or otherwise) arising in any
+2640:  way out of the use.of this software, even if advised of the pos
+2680: sibility of such damage....</xt:license>.      .      .      .  
+26c0:     .      .      .      .      .      .      .      <xt:descrip
+2700: tion>DEVELOPMENT BUILD of the Oxygen TEI plugin.            base
+2740: d on the current trunk versions of TEI P5 and the .            T
+2780: EI Stylesheets.Jenkins build number: 2019-05-06-012411..        
+27c0:   Use this only if you are testing the ..      plugin. To avoid 
+2800: conflict with builtin framework, please ensure that..      you h
+2840: ave gone to Preferences-&gt;Document Type Association in..      
+2880: oXygen and deactivated all the TEI frameworks..      that have "
+28c0: External" in the storage columns..        </xt:description>.   <
+2900: /xt:extension>.   <xt:extension id="tei">.      <xt:location hre
+2940: f="https://jenkins.tei-c.org/job/oxygen-tei-stable/14/artifact/o
+2980: xygen-tei/oxygen-tei-3.5.0-7.47.0.zip"/>.      <xt:version>3.5.8
+29c0: </xt:version>.        <xt:oxy_version xmlns:local="http://teijen
+2a00: kins.hcmc.uvic.ca/ns">18.0+</xt:oxy_version>.        <xt:type>fr
+2a40: amework</xt:type>.        <xt:author>TEI Technical Council</xt:a
+2a80: uthor>.        <xt:name>TEI P5 (development build)</xt:name>.   
+2ac0:      .        <xt:license>...These material is dual-licensed:..1
+2b00: . Distributed under a Creative Commons Attribution 3.0.Unported 
+2b40: License http://creativecommons.org/licenses/by/3.0/ ..2. http://
+2b80: www.opensource.org/licenses/BSD-2-Clause....All rights reserved.
+2bc0: ..Redistribution and use in source and binary forms, with or wit
+2c00: hout.modification, are permitted provided that the following con
+2c40: ditions are.met:..* Redistributions of source code must retain t
+2c80: he above copyright.notice, this list of conditions and the follo
+2cc0: wing disclaimer...* Redistributions in binary form must reproduc
+2d00: e the above copyright.notice, this list of conditions and the fo
+2d40: llowing disclaimer in the.documentation and/or other materials p
+2d80: rovided with the distribution...This software is provided by the
+2dc0:  copyright holders and contributors."as is" and any express or i
+2e00: mplied warranties, including, but not.limited to, the implied wa
+2e40: rranties of merchantability and fitness for.a particular purpose
+2e80:  are disclaimed. In no event shall the copyright.holder or contr
+2ec0: ibutors be liable for any direct, indirect, incidental,.special,
+2f00:  exemplary, or consequential damages (including, but not.limited
+2f40:  to, procurement of substitute goods or services; loss of use,.d
+2f80: ata, or profits; or business interruption) however caused and on
+2fc0:  any.theory of liability, whether in contract, strict liability,
+3000:  or tort.(including negligence or otherwise) arising in any way 
+3040: out of the use.of this software, even if advised of the possibil
+3080: ity of such damage....</xt:license>.      .      .      .      .
+30c0:       .      .      .      .      .      .      .      <xt:descr
+3100: iption>DEVELOPMENT BUILD of the Oxygen TEI plugin.            ba
+3140: sed on the current trunk versions of TEI P5 and the .           
+3180:  TEI Stylesheets.Jenkins build number: 2019-05-06-034911..      
+31c0:     Use this only if you are testing the ..      plugin. To avoi
+3200: d conflict with builtin framework, please ensure that..      you
+3240:  have gone to Preferences-&gt;Document Type Association in..    
+3280:   oXygen and deactivated all the TEI frameworks..      that have
+32c0:  "External" in the storage columns..        </xt:description>.  
+3300:  </xt:extension>.   <xt:extension id="tei">.      <xt:location h
+3340: ref="https://jenkins.tei-c.org/job/oxygen-tei-stable/15/artifact
+3380: /oxygen-tei/oxygen-tei-3.5.0-7.47.0.zip"/>.      <xt:version>3.5
+33c0: .9</xt:version>.        <xt:oxy_version xmlns:local="http://teij
+3400: enkins.hcmc.uvic.ca/ns">18.0+</xt:oxy_version>.        <xt:type>
+3440: framework</xt:type>.        <xt:author>TEI Technical Council</xt
+3480: :author>.        <xt:name>TEI P5 (development build)</xt:name>. 
+34c0:        .        <xt:license>...These material is dual-licensed:.
+3500: .1. Distributed under a Creative Commons Attribution 3.0.Unporte
+3540: d License http://creativecommons.org/licenses/by/3.0/ ..2. http:
+3580: //www.opensource.org/licenses/BSD-2-Clause....All rights reserve
+35c0: d...Redistribution and use in source and binary forms, with or w
+3600: ithout.modification, are permitted provided that the following c
+3640: onditions are.met:..* Redistributions of source code must retain
+3680:  the above copyright.notice, this list of conditions and the fol
+36c0: lowing disclaimer...* Redistributions in binary form must reprod
+3700: uce the above copyright.notice, this list of conditions and the 
+3740: following disclaimer in the.documentation and/or other materials
+3780:  provided with the distribution...This software is provided by t
+37c0: he copyright holders and contributors."as is" and any express or
+3800:  implied warranties, including, but not.limited to, the implied 
+3840: warranties of merchantability and fitness for.a particular purpo
+3880: se are disclaimed. In no event shall the copyright.holder or con
+38c0: tributors be liable for any direct, indirect, incidental,.specia
+3900: l, exemplary, or consequential damages (including, but not.limit
+3940: ed to, procurement of substitute goods or services; loss of use,
+3980: .data, or profits; or business interruption) however caused and 
+39c0: on any.theory of liability, whether in contract, strict liabilit
+3a00: y, or tort.(including negligence or otherwise) arising in any wa
+3a40: y out of the use.of this software, even if advised of the possib
+3a80: ility of such damage....</xt:license>.      .      .      .     
+3ac0:  .      .      .      .      .      .      .      .      .      
+3b00: <xt:description>DEVELOPMENT BUILD of the Oxygen TEI plugin.     
+3b40:        based on the current trunk versions of TEI P5 and the .  
+3b80:           TEI Stylesheets.Jenkins build number: 2019-05-06-04041
+3bc0: 1..          Use this only if you are testing the ..      plugin
+3c00: . To avoid conflict with builtin framework, please ensure that..
+3c40:       you have gone to Preferences-&gt;Document Type Association
+3c80:  in..      oXygen and deactivated all the TEI frameworks..      
+3cc0: that have "External" in the storage columns..        </xt:descri
+3d00: ption>.   </xt:extension>.   <xt:extension id="tei">.      <xt:l
+3d40: ocation href="https://jenkins.tei-c.org/job/oxygen-tei-stable/16
+3d80: /artifact/oxygen-tei/oxygen-tei-3.5.0-7.47.0.zip"/>.      <xt:ve
+3dc0: rsion>3.5.10</xt:version>.        <xt:oxy_version xmlns:local="h
+3e00: ttp://teijenkins.hcmc.uvic.ca/ns">18.0+</xt:oxy_version>.       
+3e40:  <xt:type>framework</xt:type>.        <xt:author>TEI Technical C
+3e80: ouncil</xt:author>.        <xt:name>TEI P5 (development build)</
+3ec0: xt:name>.        .        <xt:license>...These material is dual-
+<= Recv SSL data, 5 bytes (0x5)
+0000: ...&.
+<= Recv data, 9880 bytes (0x2698)
+0000: licensed:..1. Distributed under a Creative Commons Attribution 3
+0040: .0.Unported License http://creativecommons.org/licenses/by/3.0/ 
+0080: ..2. http://www.opensource.org/licenses/BSD-2-Clause....All righ
+00c0: ts reserved...Redistribution and use in source and binary forms,
+0100:  with or without.modification, are permitted provided that the f
+0140: ollowing conditions are.met:..* Redistributions of source code m
+0180: ust retain the above copyright.notice, this list of conditions a
+01c0: nd the following disclaimer...* Redistributions in binary form m
+0200: ust reproduce the above copyright.notice, this list of condition
+0240: s and the following disclaimer in the.documentation and/or other
+0280:  materials provided with the distribution...This software is pro
+02c0: vided by the copyright holders and contributors."as is" and any 
+0300: express or implied warranties, including, but not.limited to, th
+0340: e implied warranties of merchantability and fitness for.a partic
+0380: ular purpose are disclaimed. In no event shall the copyright.hol
+03c0: der or contributors be liable for any direct, indirect, incident
+0400: al,.special, exemplary, or consequential damages (including, but
+0440:  not.limited to, procurement of substitute goods or services; lo
+0480: ss of use,.data, or profits; or business interruption) however c
+04c0: aused and on any.theory of liability, whether in contract, stric
+0500: t liability, or tort.(including negligence or otherwise) arising
+0540:  in any way out of the use.of this software, even if advised of 
+0580: the possibility of such damage....</xt:license>.      .      .  
+05c0:     .      .      .      .      .      .      .      .      .   
+0600:    .      .      <xt:description>DEVELOPMENT BUILD of the Oxygen
+0640:  TEI plugin.            based on the current trunk versions of T
+0680: EI P5 and the .            TEI Stylesheets.Jenkins build number:
+06c0:  2019-05-06-150914..          Use this only if you are testing t
+0700: he ..      plugin. To avoid conflict with builtin framework, ple
+0740: ase ensure that..      you have gone to Preferences-&gt;Document
+0780:  Type Association in..      oXygen and deactivated all the TEI f
+07c0: rameworks..      that have "External" in the storage columns..  
+0800:       </xt:description>.   </xt:extension>.   <xt:extension id="
+0840: tei">.      <xt:location href="https://jenkins.tei-c.org/job/oxy
+0880: gen-tei-stable/17/artifact/oxygen-tei/oxygen-tei-3.5.0-7.47.0.zi
+08c0: p"/>.      <xt:version>3.5.11</xt:version>.        <xt:oxy_versi
+0900: on xmlns:local="http://teijenkins.hcmc.uvic.ca/ns">18.0+</xt:oxy
+0940: _version>.        <xt:type>framework</xt:type>.        <xt:autho
+0980: r>TEI Technical Council</xt:author>.        <xt:name>TEI P5 (dev
+09c0: elopment build)</xt:name>.        .        <xt:license>...These 
+0a00: material is dual-licensed:..1. Distributed under a Creative Comm
+0a40: ons Attribution 3.0.Unported License http://creativecommons.org/
+0a80: licenses/by/3.0/ ..2. http://www.opensource.org/licenses/BSD-2-C
+0ac0: lause....All rights reserved...Redistribution and use in source 
+0b00: and binary forms, with or without.modification, are permitted pr
+0b40: ovided that the following conditions are.met:..* Redistributions
+0b80:  of source code must retain the above copyright.notice, this lis
+0bc0: t of conditions and the following disclaimer...* Redistributions
+0c00:  in binary form must reproduce the above copyright.notice, this 
+0c40: list of conditions and the following disclaimer in the.documenta
+0c80: tion and/or other materials provided with the distribution...Thi
+0cc0: s software is provided by the copyright holders and contributors
+0d00: ."as is" and any express or implied warranties, including, but n
+0d40: ot.limited to, the implied warranties of merchantability and fit
+0d80: ness for.a particular purpose are disclaimed. In no event shall 
+0dc0: the copyright.holder or contributors be liable for any direct, i
+0e00: ndirect, incidental,.special, exemplary, or consequential damage
+0e40: s (including, but not.limited to, procurement of substitute good
+0e80: s or services; loss of use,.data, or profits; or business interr
+0ec0: uption) however caused and on any.theory of liability, whether i
+0f00: n contract, strict liability, or tort.(including negligence or o
+0f40: therwise) arising in any way out of the use.of this software, ev
+0f80: en if advised of the possibility of such damage....</xt:license>
+0fc0: .      .      .      .      .      .      .      .      .      .
+1000:       .      .      .      .      .      <xt:description>DEVELOP
+1040: MENT BUILD of the Oxygen TEI plugin.            based on the cur
+1080: rent trunk versions of TEI P5 and the .            TEI Styleshee
+10c0: ts.Jenkins build number: 2019-05-06-153913..          Use this o
+1100: nly if you are testing the ..      plugin. To avoid conflict wit
+1140: h builtin framework, please ensure that..      you have gone to 
+1180: Preferences-&gt;Document Type Association in..      oXygen and d
+11c0: eactivated all the TEI frameworks..      that have "External" in
+1200:  the storage columns..        </xt:description>.   </xt:extensio
+1240: n>.   <xt:extension xmlns:local="http://teijenkins.hcmc.uvic.ca/
+1280: ns" id="tei">.      <xt:location href="https://jenkins.tei-c.org
+12c0: /job/oxygen-tei-stable/18/artifact/oxygen-tei/oxygen-tei-3.5.0-7
+1300: .47.0.zip"/>.      <xt:version>3.5.12</xt:version>.        <xt:o
+1340: xy_version>15.2+</xt:oxy_version>.        <xt:type>framework</xt
+1380: :type>.        <xt:author>TEI Technical Council</xt:author>.    
+13c0:     <xt:name>TEI P5 (development build)</xt:name>.        .     
+1400:    <xt:license>...These material is dual-licensed:..1. Distribut
+1440: ed under a Creative Commons Attribution 3.0.Unported License htt
+1480: p://creativecommons.org/licenses/by/3.0/ ..2. http://www.opensou
+14c0: rce.org/licenses/BSD-2-Clause....All rights reserved...Redistrib
+1500: ution and use in source and binary forms, with or without.modifi
+1540: cation, are permitted provided that the following conditions are
+1580: .met:..* Redistributions of source code must retain the above co
+15c0: pyright.notice, this list of conditions and the following discla
+1600: imer...* Redistributions in binary form must reproduce the above
+1640:  copyright.notice, this list of conditions and the following dis
+1680: claimer in the.documentation and/or other materials provided wit
+16c0: h the distribution...This software is provided by the copyright 
+1700: holders and contributors."as is" and any express or implied warr
+1740: anties, including, but not.limited to, the implied warranties of
+1780:  merchantability and fitness for.a particular purpose are discla
+17c0: imed. In no event shall the copyright.holder or contributors be 
+1800: liable for any direct, indirect, incidental,.special, exemplary,
+1840:  or consequential damages (including, but not.limited to, procur
+1880: ement of substitute goods or services; loss of use,.data, or pro
+18c0: fits; or business interruption) however caused and on any.theory
+1900:  of liability, whether in contract, strict liability, or tort.(i
+1940: ncluding negligence or otherwise) arising in any way out of the 
+1980: use.of this software, even if advised of the possibility of such
+19c0:  damage....</xt:license>.      .      .      .      .      .    
+1a00:   .      .      .      .      .      .      .      .      .     
+1a40:  .      <xt:description>DEVELOPMENT BUILD of the Oxygen TEI plug
+1a80: in.            based on the current trunk versions of TEI P5 and
+1ac0:  the .            TEI Stylesheets.Jenkins build number: 2019-06-
+1b00: 13-200412..          Use this only if you are testing the ..    
+1b40:   plugin. To avoid conflict with builtin framework, please ensur
+1b80: e that..      you have gone to Preferences-&gt;Document Type Ass
+1bc0: ociation in..      oXygen and deactivated all the TEI frameworks
+1c00: ..      that have "External" in the storage columns..        </x
+1c40: t:description>.   </xt:extension>.   <xt:extension xmlns:local="
+1c80: http://teijenkins.hcmc.uvic.ca/ns" id="tei">.      <xt:location 
+1cc0: href="https://jenkins.tei-c.org/job/oxygen-tei-stable/22/artifac
+1d00: t/oxygen-tei/oxygen-tei-3.6.0-7.48.0.zip"/>.      <xt:version>3.
+1d40: 6.1</xt:version>.        <xt:oxy_version>15.2+</xt:oxy_version>.
+1d80:         <xt:type>framework</xt:type>.        <xt:author>TEI Tech
+1dc0: nical Council</xt:author>.        <xt:name>TEI P5 (development b
+1e00: uild)</xt:name>.        .        <xt:license>...These material i
+1e40: s dual-licensed:..1. Distributed under a Creative Commons Attrib
+1e80: ution 3.0.Unported License http://creativecommons.org/licenses/b
+1ec0: y/3.0/ ..2. http://www.opensource.org/licenses/BSD-2-Clause....A
+1f00: ll rights reserved...Redistribution and use in source and binary
+1f40:  forms, with or without.modification, are permitted provided tha
+1f80: t the following conditions are.met:..* Redistributions of source
+1fc0:  code must retain the above copyright.notice, this list of condi
+2000: tions and the following disclaimer...* Redistributions in binary
+2040:  form must reproduce the above copyright.notice, this list of co
+2080: nditions and the following disclaimer in the.documentation and/o
+20c0: r other materials provided with the distribution...This software
+2100:  is provided by the copyright holders and contributors."as is" a
+2140: nd any express or implied warranties, including, but not.limited
+2180:  to, the implied warranties of merchantability and fitness for.a
+21c0:  particular purpose are disclaimed. In no event shall the copyri
+2200: ght.holder or contributors be liable for any direct, indirect, i
+2240: ncidental,.special, exemplary, or consequential damages (includi
+2280: ng, but not.limited to, procurement of substitute goods or servi
+22c0: ces; loss of use,.data, or profits; or business interruption) ho
+2300: wever caused and on any.theory of liability, whether in contract
+2340: , strict liability, or tort.(including negligence or otherwise) 
+2380: arising in any way out of the use.of this software, even if advi
+23c0: sed of the possibility of such damage....</xt:license>.      .  
+2400:     .      .      .      .      .      .      .      .      .   
+2440:    .      .      .      .      .      .      <xt:description>DEV
+2480: ELOPMENT BUILD of the Oxygen TEI plugin.            based on the
+24c0:  current trunk versions of TEI P5 and the .            TEI Style
+2500: sheets.Jenkins build number: 2019-07-18-143911..          Use th
+2540: is only if you are testing the ..      plugin. To avoid conflict
+2580:  with builtin framework, please ensure that..      you have gone
+25c0:  to Preferences-&gt;Document Type Association in..      oXygen a
+2600: nd deactivated all the TEI frameworks..      that have "External
+2640: " in the storage columns..        </xt:description>.   </xt:exte
+2680: nsion>.</xt:extensions>.
+== Info: Connection #0 to host www.tei-c.org left intact

@@ -1,0 +1,19 @@
+<!-- Action definition file for TEI plugin -->
+<!-- $Id$
+-->
+
+<!DOCTYPE ACTIONS SYSTEM "actions.dtd">
+
+<ACTIONS>	
+	<ACTION NAME="tei.update-tei-package">
+		<CODE>
+			org.tei_c.jedit.teiplugin.TEI.getInstance().updateTEIPackage();
+		</CODE>
+	</ACTION>
+	<ACTION NAME="tei.new-buffer-from-template">
+		<CODE>
+			org.tei_c.jedit.teiplugin.TEI.getInstance().newBufferFromTemplate(view);
+		</CODE>
+	</ACTION>
+</ACTIONS>
+

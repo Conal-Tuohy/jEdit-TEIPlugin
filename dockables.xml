@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!-- Dockable component definition file for TEI plugin -->
+<!-- $Id$
+-->
+
+<!DOCTYPE DOCKABLES SYSTEM "dockables.dtd">
+
+<!-- TEI dockable windows -->
+
+<DOCKABLES>
+	<DOCKABLE NAME="tei">
+		new org.tei_c.jedit.teiplugin.TEIPanel(view, position);
+	</DOCKABLE>
+</DOCKABLES>
