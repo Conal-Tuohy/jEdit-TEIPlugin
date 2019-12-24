@@ -3,7 +3,7 @@
 
 # jEdit only needs to load the plugin the first time the user accesses it
 # the presence of this property also tells jEdit the plugin is using the new API
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.activate=defer
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.activate=startup
 
 # These two properties are required for all plugins
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.name=TEI
@@ -35,7 +35,8 @@ plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.4=plugin CommonControlsPlugin 
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.5=plugin eclipseicons.EclipseIconsPlugin 1.0
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.6=plugin antlr.AntlrPlugin 4.5.1
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.7=plugin errorlist.ErrorListPlugin 2.3
-#TODO add XML plugin
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.8=optional plugin buffertabs.BufferTabsPlugin 1.2.4
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.9=plugin xml.XmlPlugin 3.0.6
 
 
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.description=This plugin provides tooling for working with Text Encoding for Interchange (TEI) XML
@@ -48,10 +49,6 @@ plugin.org.tei_c.jedit.teiplugin.TEIPlugin.menu=tei \
 
 # action labels for actions supplied by dockables.xml
 tei.label=TEI
-
-# action labels for actions supplied by actions.xml
-tei.update-tei-package.label=Update TEI package
-tei.new-buffer-from-template.label=New TEI file from template
 
 # plugin option pane
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.option-pane=tei
@@ -69,6 +66,18 @@ options.tei.auto-update.title=Auto-update TEI package
 # window title
 tei.title=TEI
 
-# window toolbar buttons
-tei.new-buffer-from-template.icon=new_xml.gif
+# action labels for actions supplied by actions.xml, and button icons,
+# including for actions which are defined by other plugins, and for which
+# the TEI toolbar provides a button.
+# NB the icon names are the file names from the EclipseIcons plugin
+tei.update-tei-package.label=Update TEI package
 tei.update-tei-package.icon=update.gif
+tei.new-buffer-from-template.label=New TEI file
+tei.new-buffer-from-template.icon=new_xml.gif
+sidekick-parse.icon=test.gif
+# TODO toolbar buttons which still need icons defined
+# xml-insert.icon=
+# xml-match-tag.icon=
+# xml-select-between-tags.icon=
+# xml-split-tag.icon=
+# xmlindenter.indent.icon=

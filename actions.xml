@@ -7,7 +7,7 @@
 <ACTIONS>	
 	<ACTION NAME="tei.update-tei-package">
 		<CODE>
-			org.tei_c.jedit.teiplugin.TEI.getInstance().updateTEIPackage();
+			org.tei_c.jedit.teiplugin.TEI.getInstance().updateTEIPackage(true);
 		</CODE>
 	</ACTION>
 	<ACTION NAME="tei.new-buffer-from-template">

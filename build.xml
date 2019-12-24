@@ -23,7 +23,7 @@
 			<get skipexisting="true" src="${options.tei.package-url}" dest="build/package-metadata.xml"/>
 			<xslt in="build/package-metadata.xml" out="tei-package-location.props" style="find-latest-tei-package.xsl"/>
 			<property file="tei-package-location.props"/>
-			<get skipexisting="true" src="${tei-package-location}" dest="package.zip"/>
+			<get skipexisting="true" src="${tei.package-location}" dest="package.zip"/>
 		</sequential>
 	</target>
 	<path id="project.class.path">
@@ -46,6 +46,7 @@
 	<selector id="packageFiles">
 		<or>
 			<filename name="package.zip" />
+            <filename name="TEI-docking-layout.xml" />
 		</or>
 	</selector>
 </project>
