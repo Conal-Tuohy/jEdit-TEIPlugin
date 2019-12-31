@@ -76,17 +76,20 @@ public class TEI {
 				"tei/templates/"
 			)
 		);
-		// Initialize a Saxon XPath processor for processing the TEI package metadata
+		// Initialize a Saxon XPath processor for processing the TEI package metadata, etc.
     		processor = new Processor(false); // commercial license key not required
     		xpathCompiler = processor.newXPathCompiler();
+    		
+    		// unpack the bundled TEI package if it has not yet been installed
+    		initialInstallTEIPackage();
+    		
+    		// check if the TEI package needs updating, without saying anything if there's no update available
+    		updateTEIPackage(false);
     		
 		debug("Updating jEdit's TEI related settings...");
     		installKeyboardShortcuts();
     		// TODO get this working
     		// installDockableWindowLayout();
-    		
-    		// check if the TEI package needs updating, without saying anything if there's no update available
-    		updateTEIPackage(false);
 	}
 
 
@@ -310,6 +313,25 @@ public class TEI {
     			}
 		}
 		return packageLocation;
+    	}
+    	
+    	/**
+    	* Unpacks the version of the TEI package which was bundled with the plugin.
+    	* Only runs if there is no unpacked TEI package already
+    	*/
+    	private void initialInstallTEIPackage() {
+    		if (! jEdit.getBooleanProperty("tei.installed", false)) {
+    			try {
+				File pluginHome = getPlugin().getPluginHome();
+				pluginHome.mkdir();
+				File bundledPackage = new File(pluginHome, "package.zip");
+				copyResourceToFile("/package.zip", bundledPackage);
+				unpackPackage(bundledPackage);
+				jEdit.setBooleanProperty("tei.installed", true);
+			} catch (IOException e) {
+				error("Could not perform initial unpack of bundled TEI package", e);
+			}
+		}
     	}
     	
    	/**
