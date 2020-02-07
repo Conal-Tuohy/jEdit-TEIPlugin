@@ -28,6 +28,8 @@ import java.util.Arrays;
 import org.gjt.sp.jedit.browser.*;
 import org.gjt.sp.jedit.io.FileVFS;
 import org.gjt.sp.jedit.*;
+import org.gjt.sp.jedit.buffer.JEditBuffer ;
+import org.gjt.sp.jedit.buffer.BufferAdapter;
 import org.gjt.sp.util.StandardUtilities;
 import org.gjt.sp.jedit.menu.DynamicMenuProvider;
 
@@ -70,11 +72,27 @@ public class TemplateMenuProvider implements DynamicMenuProvider {
 				view.showBuffer(buffer);
 				buffer.setMode("xml");
 				boolean inserted = buffer.insertFile(view, templateFileName);
-				if (!inserted) {
+				if (inserted) {
+					// wait for buffer to report that the insertion has finished,
+					// then  move cursor to the end
+					buffer.addBufferListener(
+						new BufferAdapter() {
+							@Override
+							public void contentInserted(
+								JEditBuffer buffer,
+								int startLine,
+								int offset,
+								int numLines,
+								int length
+							) {
+								view.getEditPane().getTextArea().goToBufferStart(false); 
+							}
+						}
+					);
+				} else {
 					TEI.error("Failed to insert template file", templateFileName);
 				}
 				// neither of these lines seems to do anything
-				view.getEditPane().getTextArea().goToBufferStart(false); 
 				view.getEditPane().getTextArea().setCaretPosition(0);
 			}
 		};
