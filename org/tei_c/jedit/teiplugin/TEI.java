@@ -22,7 +22,8 @@ import java.io.FileOutputStream;
 
 import java.util.Set;
 import java.util.HashSet;
-
+import java.util.Properties;
+import java.util.Map.Entry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipEntry;
  
@@ -55,12 +56,16 @@ import org.gjt.sp.jedit.msg.PropertiesChanged;
 import org.gjt.sp.util.Log;
 import org.gjt.sp.util.StandardUtilities;
 
+import org.jedit.keymap.Keymap;
+import org.jedit.keymap.KeymapManager;
+
 /**
  * The main class of the TEI plugin
  *
  */
 public class TEI {
 	private static TEI singleton = null;
+	private static String TEI_KEYMAP_NAME = "TEI";
 	private TemplateMenuProvider templateMenuProvider;
 	private View view;
 
@@ -86,12 +91,10 @@ public class TEI {
     		// check if the TEI package needs updating, without saying anything if there's no update available
     		updateTEIPackage(false);
     		
-		debug("Updating jEdit's TEI related settings...");
     		installKeyboardShortcuts();
     		// TODO get this working
     		// installDockableWindowLayout();
 	}
-
 
 	/**
 	* Return the single instance of this class
@@ -118,22 +121,37 @@ public class TEI {
 	private void installKeyboardShortcuts() {
 		// Install the "TEI_keys.props" keyboard shortcuts
 		debug("Installing TEI keyboard shortcuts...");
-		try {
-			copyResourceToFile(
-				"/TEI_keys.props", 
-				new File(
-					new File(
-						jEdit.getSettingsDirectory(), 
-						"keymaps"
-					), 
-					"TEI_keys.props"
-				)
-			);
-			jEdit.getKeymapManager().reload();
-			debug("Installed TEI keyboard shortcuts.");
-		} catch (IOException e) {
-			error("Failed to install TEI keyboard shortcuts", e);
+		KeymapManager keymapManager = jEdit.getKeymapManager();
+		// Load the TEI keymap, if it already exists
+		Keymap keymap = keymapManager.getKeymap(TEI_KEYMAP_NAME);
+		// If the TEI keymap didn't already exist, create it now
+		if (keymap == null) {
+			debug("TEI Plugin creating 'TEI' keymap"); 
+			// Get the name of the keymap which is currently in use; we will make a copy of this keymap and add our shortcuts to the copy.
+			String currentKeymapName = jEdit.getProperty("keymap.current", keymapManager.DEFAULT_KEYMAP_NAME);
+			keymapManager.copyKeymap(keymapManager.DEFAULT_KEYMAP_NAME, TEI_KEYMAP_NAME);
+			keymap = keymapManager.getKeymap(TEI_KEYMAP_NAME);
 		}
+		// Read in the list of TEI keyboard shortcuts from the TEI_keys.props file packaged within the TEI Plugin's JAR file
+		Properties shortcutProperties = new Properties();
+		try {
+			final InputStream stream = this.getClass().getResourceAsStream("TEI_keys.props");
+			shortcutProperties.load(stream);
+			stream.close();
+		} catch (IOException ioe) {
+			error("Failed to read keyboard shortcuts", ioe);
+		}
+		// Add all of these shortcuts to the TEI keymap
+		// Doing this even if the current keymap already was the TEI keymap will ensure that new versions of the TEI plugin will update any key-bindings.
+		Set<Entry<Object, Object>> shortcuts = shortcutProperties.entrySet();
+		for (Entry<Object, Object> shortcut : shortcuts) {
+			debug("TEI Plugin adding shortcut", shortcut.getKey()); 
+			keymap.setShortcut((String) shortcut.getKey(), (String) shortcut.getValue());
+		}
+		// Save the TEI keymap, and set it to be the current keymap
+		keymap.save();
+		jEdit.setProperty("keymap.current", TEI_KEYMAP_NAME);
+		jEdit.propertiesChanged();		
 	}
 	
 	private void installDockableWindowLayout() {
@@ -261,10 +279,11 @@ public class TEI {
     	* @return URL of an updated package to download and install, or null if no update is required or available
     	*/
     	private String getUpdatedTEIPackageLocation(boolean displayPackageUnchangedNotice) {
-    		org.gjt.sp.util.Log.log(org.gjt.sp.util.Log.DEBUG, singleton, "Checking for updated package...");
+    		org.gjt.sp.util.Log.log(org.gjt.sp.util.Log.DEBUG, singleton, "Locating a new TEI package...");
     		String packageLocation = null;
     		try {
     			XdmNode packageMetadataDocument = getDocument(
+    				// TODO use the configuration property instead of the literal URI here
     				downloadResource("https://www.tei-c.org/release/oxygen/updateSite.oxygen", "package-metadata.xml")
 			);
 			// declare namespace of Oxygen's "extension" vocabulary
@@ -341,7 +360,7 @@ public class TEI {
 	 */
     	public void updateTEIPackage(boolean displayPackageUnchangedNotice) {
     		// download and install the oXygen TEI package
-    		org.gjt.sp.util.Log.log(org.gjt.sp.util.Log.DEBUG, singleton, "Checking for updated package...");
+    		org.gjt.sp.util.Log.log(org.gjt.sp.util.Log.DEBUG, singleton, "Updating TEI package, if a new package is available and an update is desired...");
     		String packageLocation = getUpdatedTEIPackageLocation(displayPackageUnchangedNotice);
     		if (packageLocation == null) {
     			debug("TEI package update is not required");

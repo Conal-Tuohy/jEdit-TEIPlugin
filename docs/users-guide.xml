@@ -25,7 +25,7 @@
         </legalnotice>
         <title>jEdit TEI Plugin</title>
 </articleinfo>
-<section>
+<section id="introduction">
         <title>Introduction</title>
 
         <indexterm>
@@ -37,37 +37,48 @@
 
         <para>For more information about TEI, visit the <ulink url="https://tei-c.org/">website
         of the <orgname>Text Encoding Initiative Consortium</orgname></ulink>. </para>
+        
+        <para>Development of the initial version of the plugin was funded by DARIAH-EU in 2018/2019.</para>
 </section>
-<section>
-        <title>Operation</title>
-
-        <para><indexterm>
-                <primary>TEI</primary>
-
-                <secondary>shortcut keys</secondary>
-            </indexterm>The TEI plugin provides the following keyboard shortcuts</para>
-</section>
-<section>
-        <title>Toolbar buttons</title>
+<section id="actions">
+        <title>Toolbar buttons and keyboard shortcuts</title>
 
         <para>The TEI toolbar contains the following buttons:</para>
 
         <itemizedlist>
             <listitem>
-                <para>The <guilabel>Update TEI Package</guilabel> button
-                downloads a package of TEI-related files from the TEI 
-                Consortium's website.
+                <para>Click the <guilabel>Update TEI Package</guilabel> button or type <userinput>C+u</userinput>
+                to manually trigger the download of a package of TEI-related files from the TEI Consortium's website. 
+                </para>
+                <para>
                 To specify a different location to download the package from,
-                use the <link
+                see the <link
                 linkend="options">options dialog</link>.</para>
             </listitem>
 
             <listitem>
-                <para>The <guilabel>New TEI file from template</guilabel> button
-                opens a hierarchical menu of TEI template files, provided by the TEI package. 
-                Selecting one of the templates will create a new document based on the selected template.</para>
+                <para>Click the <guilabel>New TEI file</guilabel> button, or type <userinput>C+n</userinput>, to
+                open a hierarchical menu of TEI template files, provided by the TEI package. 
+                Selecti one of the templates to create a new document based on that template.</para>
             </listitem>
-
+            
+            <listitem>
+            	<para>Click the <guilabel>Parse Buffer</guilabel> button, or type <userinput>CS+w</userinput>, to parse the current buffer. Any schema invalidities will be reported in the <guilabel>Error List</guilabel> panel.</para>
+            </listitem>
+            
+            <listitem>
+            	<para>If the cursor is positioned on either an opening or closing tag of an XML element, you can click the <guilabel>Go to Matching Tag or Bracket</guilabel> button,r type <userinput>CS+m</userinput>, to move the cursor to the other matching tag; i.e. from the opening to the closing tag, or from the closing tag to the opening tag.</para>
+            </listitem>
+            
+            <listitem>
+            	<para>Click the <guilabel>Selection between tags</guilabel> button, or type <userinput>CS+t</userinput> to expand the selected portion of the document to include the content of the parent XML element.</para>
+            </listitem>
+            <listitem>
+            	<para>Click the <guilabel>Split Tag</guilabel> button, or type <userinput>CS+d</userinput>, to split the parent XML element in two, at the location of the cursor.</para>
+            </listitem>
+            <listitem>
+            	<para>Click the <guilabel>Index XML</guilabel> button, or type <userinput>CS+p</userinput> to indent the XML document.</para>
+            </listitem>
         </itemizedlist>
 
         <para>These operations are also listed in the menu which appears for
@@ -96,12 +107,13 @@
             <listitem>
                 <para>The <guilabel>TEI package update URL</guilabel> field specifies the location of a metadata
                 resource which lists the avaiable versions of the TEI package. When the TEI Consortium updates
-                the package metadata resource to point to a new package, the TEI Plugin will download and install the new package.</para>
+                this package metadata resource to add a reference to a new package, the TEI Plugin will download and install the new package.</para>
+                <para>This URL can be changed, which can be useful if you are building a new version of the TEI package and want to test it.</para>
             </listitem>
 
         </itemizedlist>
 </section>
-<section>
+<section id="legal">
         <title>Legal notices</title>
 
         <para>The TEI plugin is released under the GNU General Public
@@ -121,10 +133,9 @@
         <filename>COPYING.DOC.txt</filename> included with the jEdit
         distribution.</para>
 </section>
-<section>
+<section id="feedback">
         <title>Feedback</title>
 
-        <para>Comments, bug reports and other feedback may be sent to the jEdit-users
-        mailing list.</para>
+        <para>Comments, bug reports and other feedback should be posted to <ulink url="https://github.com/Conal-Tuohy/jEdit-TEIPlugin/issues">the TEI plugin's issue tracker</ulink>.</para>
 </section>
 </article>

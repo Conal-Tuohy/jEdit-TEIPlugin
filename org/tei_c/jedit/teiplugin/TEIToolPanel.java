@@ -6,14 +6,18 @@
 package org.tei_c.jedit.teiplugin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Component;
 
 import javax.swing.AbstractButton;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JButton;
 import javax.swing.JPopupMenu;
 import javax.swing.ImageIcon;
+
+import java.util.HashMap;
 
 import eclipseicons.EclipseIconsPlugin;
 
@@ -27,6 +31,7 @@ public class TEIToolPanel extends JPanel {
 	private TEIPanel dockablePanel;
 
 	private JLabel label;
+	private HashMap<String, Component> components = new HashMap<String, Component>();
 
 	public TEIToolPanel(TEIPanel dockablePanel) {
 		org.gjt.sp.util.Log.log(org.gjt.sp.util.Log.DEBUG, this, "TEI toolbar initializing...");
@@ -86,6 +91,10 @@ xmlindenter.indent.shortcut=CS+p
 */
 		org.gjt.sp.util.Log.log(org.gjt.sp.util.Log.DEBUG, this, "TEI toolbar initialized");
 	}
+	
+	public Component getComponent(String name) {
+		return components.get(name);
+	}
 
 	/**
 	* make a button for calling an existing action defined externally to this plugin
@@ -106,7 +115,17 @@ xmlindenter.indent.shortcut=CS+p
 				}
 			)
 		);
-	}	
+	}
+	
+	// index all the buttons in this panel by their name
+	public Component add(Component component) {
+		super.add(component);
+		String name = component.getName();
+		if (name != null) {
+			components.put(name, component);
+		}
+		return component;
+	}
 	
 	/*
 

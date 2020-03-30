@@ -86,6 +86,10 @@ public class TEIPanel extends JPanel
 		return view;
 	}
 	
+	public TEIToolPanel getToolPanel() {
+		return toolPanel;
+	}
+	
 	public void focusOnDefaultComponent() {
 		
 	}

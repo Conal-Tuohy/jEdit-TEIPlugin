@@ -12,7 +12,8 @@
 	</ACTION>
 	<ACTION NAME="tei.new-buffer-from-template">
 		<CODE>
-			org.tei_c.jedit.teiplugin.TEI.getInstance().newBufferFromTemplate(view);
+			wm.addDockableWindow(org.tei_c.jedit.teiplugin.TEIPlugin.NAME);
+			wm.getDockableWindow(org.tei_c.jedit.teiplugin.TEIPlugin.NAME).getToolPanel().getComponent("tei.new-buffer-from-template").doClick();
 		</CODE>
 	</ACTION>
 </ACTIONS>

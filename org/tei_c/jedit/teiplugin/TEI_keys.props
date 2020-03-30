@@ -1,5 +1,6 @@
 #jEdit's keymap TEI
 #Fri Dec 20 18:45:19 AEST 2019
+tei.new-buffer-from-template.shortcut=C+n
 sidekick-parse.shortcut=CS+w
 xml-insert.shortcut=C+e
 xml-match-tag.shortcut=CS+m
