@@ -20,7 +20,10 @@ import java.io.OutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Map.Entry;
@@ -42,10 +45,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
 
+import org.gjt.sp.jedit.ActionSet;
 import org.gjt.sp.jedit.Buffer;
 import org.gjt.sp.jedit.browser.VFSBrowser;
 import org.gjt.sp.jedit.EBComponent;
 import org.gjt.sp.jedit.EBMessage;
+import org.gjt.sp.jedit.EditAction;
 import org.gjt.sp.jedit.EditBus;
 import org.gjt.sp.jedit.GUIUtilities;
 import org.gjt.sp.jedit.View;
@@ -118,6 +123,35 @@ public class TEI {
 		streamToFile(input, destination);
 	}
 	
+	
+	private class Shortcut {
+		String name;
+		String keyCode;
+		String[] keyCodes;
+		
+		Shortcut(String name, String keyCode) {
+			this.name = name;
+			this.keyCode = keyCode;
+			this.keyCodes = keyCode.split("\\s"); // split the space-separated list of keys into separate tokens
+		}
+		boolean conflictsWith(Shortcut otherShortcut) {
+			// If the two sequences of keys are identical up to the length of the shorter of the two sequences, then they conflict, otherwise OK
+			int shorterSequenceLength = Math.min(keyCodes.length, otherShortcut.keyCodes.length);
+			for (int i = 0; i < shorterSequenceLength; i++) {
+				if (!keyCodes[i].equals(otherShortcut.keyCodes[i])) {
+					return false;
+				}
+			}
+			return true;
+		}	
+		/*
+		* for debugging
+		*/
+		public String toString() {
+			return name + "=" + keyCode;
+		}
+	}
+	
 	private void installKeyboardShortcuts() {
 		// Install the "TEI_keys.props" keyboard shortcuts
 		debug("Installing TEI keyboard shortcuts...");
@@ -132,6 +166,7 @@ public class TEI {
 			keymapManager.copyKeymap(keymapManager.DEFAULT_KEYMAP_NAME, TEI_KEYMAP_NAME);
 			keymap = keymapManager.getKeymap(TEI_KEYMAP_NAME);
 		}
+		
 		// Read in the list of TEI keyboard shortcuts from the TEI_keys.props file packaged within the TEI Plugin's JAR file
 		Properties shortcutProperties = new Properties();
 		try {
@@ -141,12 +176,54 @@ public class TEI {
 		} catch (IOException ioe) {
 			error("Failed to read keyboard shortcuts", ioe);
 		}
-		// Add all of these shortcuts to the TEI keymap
+		// Load the TEI keymap data into a Set of Shortcut objects
+		HashSet<Shortcut> newShortcuts = new HashSet<Shortcut>();
+		for (Entry<Object, Object> entry : shortcutProperties.entrySet()) {
+			newShortcuts.add(
+				new Shortcut(
+					(String) entry.getKey(), 
+					(String) entry.getValue()
+				)
+			);
+		}
+		
+		// Iterate through all the ActionSets to find all the actions, so that we can remove any keyboard shortcuts from 
+		// those actions that we are going to assign to a different action
+		ActionSet[] actionSets = jEdit.getActionSets();
+		debug("Reserving shortcuts", newShortcuts);
+		for (ActionSet actionSet : actionSets) {
+			debug("Freeing up shortcuts used by ActionSet", actionSet.getLabel());
+			EditAction[] actions = actionSet.getActions();
+			for (EditAction action : actions) {
+				String actionName = action.getName();
+				String[] shortcutNames = new String[] {
+					actionName + ".shortcut", 
+					actionName + ".shortcut2"
+				};
+				for (String shortcutName : shortcutNames) {
+					// TODO fix jEdit's JavaDoc which says that the 'name' parameter is "the shortcut name" and the return value is the "action name".
+					// Actually keymap.getShortcut maps a name like "new-file.shortcut" to a key combination such as "C+n"
+					String keyCode = keymap.getShortcut(shortcutName);
+					if (keyCode != null) {
+						// There is a shortcut defined for this action it may need to be deleted to reserve its keyboard combination for one of the actions defined by the TEI plugin's keymap
+						Shortcut shortcut = new Shortcut(shortcutName, keyCode); 
+						// Nullify the existing shortcut if it conflicts with any of our new TEI shortcuts
+						for (Shortcut reservedShortcut : newShortcuts) {
+							if (reservedShortcut.conflictsWith(shortcut)) {
+								debug("Removing shortcut",shortcut);
+								keymap.setShortcut(shortcut.name, null);
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+		// Add all of the TEI shortcuts to the TEI keymap
 		// Doing this even if the current keymap already was the TEI keymap will ensure that new versions of the TEI plugin will update any key-bindings.
-		Set<Entry<Object, Object>> shortcuts = shortcutProperties.entrySet();
-		for (Entry<Object, Object> shortcut : shortcuts) {
-			debug("TEI Plugin adding shortcut", shortcut.getKey()); 
-			keymap.setShortcut((String) shortcut.getKey(), (String) shortcut.getValue());
+		for (Shortcut shortcut : newShortcuts) {
+			debug("TEI Plugin adding shortcut", shortcut); 
+			keymap.setShortcut(shortcut.name, shortcut.keyCode);
 		}
 		// Save the TEI keymap, and set it to be the current keymap
 		keymap.save();
@@ -210,12 +287,10 @@ public class TEI {
 		// may need to follow redirects   			
 		java.net.HttpURLConnection httpConnection = (java.net.HttpURLConnection) connection;
 		httpConnection.setInstanceFollowRedirects(true);
-		// TEI web server is configured to require the following request headers; otherwise it returns a 404! */
-		//httpConnection.setRequestProperty("Host", "www.tei-c.org");
-		//httpConnection.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-		//httpConnection.setRequestProperty("User-Agent", "jEdit TEI Plugin");
+		httpConnection.setRequestProperty("User-Agent", "jEdit TEI Plugin");
 		int status = httpConnection.getResponseCode();
 		debug("Retrieved HTTP status code", status);
+		// HttpURLConnection does not follow redirects from http to https URLs, so we still need to handle redirections explicitly
 		if (status == java.net.HttpURLConnection.HTTP_MOVED_TEMP | status == java.net.HttpURLConnection.HTTP_MOVED_PERM) {
 			url = connection.getHeaderField("Location");
 			return getConnection(url);
