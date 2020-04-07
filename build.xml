@@ -20,10 +20,13 @@
 		<sequential>
 			<!-- find and download the current TEI package from the Consortium -->
 			<mkdir dir="build"/>
-			<get skipexisting="true" src="${options.tei.package-url}" dest="build/package-metadata.xml"/>
+			<!-- retrieve the package metadata file which is a manifest listing the various versions of the actual package -->
+			<get skipexisting="true" src="${options.tei.package-metadata-url}" dest="build/package-metadata.xml"/>
+			<!-- extract the location of the latest package from the metadata file -->
 			<xslt in="build/package-metadata.xml" out="tei-package-location.props" style="find-latest-tei-package.xsl"/>
 			<property file="tei-package-location.props"/>
-			<get skipexisting="true" src="${tei.package-location}" dest="package.zip"/>
+			<!-- retrieve the package archive file -->
+			<get skipexisting="true" src="${tei.package-archive-url}" dest="package.zip"/>
 		</sequential>
 	</target>
 	<path id="project.class.path">

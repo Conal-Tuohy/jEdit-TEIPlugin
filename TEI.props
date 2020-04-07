@@ -58,7 +58,7 @@ options.tei.code=new org.tei_c.jedit.teiplugin.TEIOptionPane();
 
 # Option pane labels and values
 options.tei.label=TEI
-options.tei.package-url=https://www.tei-c.org/release/oxygen/updateSite.oxygen
+options.tei.package-metadata-url=https://www.tei-c.org/release/oxygen/updateSite.oxygen
 options.tei.package-url.title=TEI package update URL:
 options.tei.auto-update=true
 options.tei.auto-update.title=Auto-update TEI package

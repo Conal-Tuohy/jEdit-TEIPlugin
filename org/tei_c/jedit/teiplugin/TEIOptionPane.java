@@ -33,13 +33,13 @@ public class TEIOptionPane extends AbstractOptionPane {
 	public void _init() {
 		autoUpdate = new JCheckBox(
 			jEdit.getProperty(TEIPlugin.OPTION_PREFIX+ "auto-update.title"),
-			jEdit.getProperty(TEIPlugin.OPTION_PREFIX + "auto-update").equals("true")
+			jEdit.getBooleanProperty(TEI.AUTO_UPDATE_PROPERTY_NAME, true)
 		);
 		addComponent(autoUpdate);
 
 		packageURL = new HistoryTextField("package-url");
 		packageURL.setText(
-			jEdit.getProperty(TEIPlugin.OPTION_PREFIX + "package-url")
+			jEdit.getProperty(TEI.TEI_PACKAGE_METADATA_LOCATION_PROPERTY_NAME)
 		);
 
 		addComponent(
@@ -50,9 +50,7 @@ public class TEIOptionPane extends AbstractOptionPane {
 	}
 
 	public void _save() {
-		jEdit.setProperty(TEIPlugin.OPTION_PREFIX + "package-url", packageURL.getText());
+		jEdit.setProperty(TEI.TEI_PACKAGE_METADATA_LOCATION_PROPERTY_NAME, packageURL.getText());
 		jEdit.setProperty(TEIPlugin.OPTION_PREFIX + "auto-update", String.valueOf(autoUpdate.isSelected()));
 	}
-
-	// end AbstractOptionPane implementation
 }

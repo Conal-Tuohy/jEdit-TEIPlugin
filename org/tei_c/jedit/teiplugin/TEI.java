@@ -71,15 +71,16 @@ import org.jedit.keymap.KeymapManager;
 public class TEI {
 	private static TEI singleton = null;
 	private static String TEI_KEYMAP_NAME = "TEI";
+	public static String TEI_PACKAGE_METADATA_LOCATION_PROPERTY_NAME = "options.tei.package-metadata-url";
+	public static String TEI_PACKAGE_LOCATION_PROPERTY_NAME = "tei.package-archive-url";
+	public static String AUTO_UPDATE_PROPERTY_NAME = "options.tei.auto-update";
 	private TemplateMenuProvider templateMenuProvider;
-	private View view;
 
 	/**
 	 * 
 	 */
 	public TEI() {
 		super();
-		this.view = jEdit.getActiveView();
 		templateMenuProvider = new TemplateMenuProvider(
 			new File(
 				getPlugin().getPluginHome(),
@@ -93,9 +94,14 @@ public class TEI {
     		// unpack the bundled TEI package if it has not yet been installed
     		initialInstallTEIPackage();
     		
-    		// check if the TEI package needs updating, without saying anything if there's no update available
-    		updateTEIPackage(false);
-    		
+    		// automatic update of the TEI package
+    		if (jEdit.getBooleanProperty(AUTO_UPDATE_PROPERTY_NAME, true)) {
+			new Thread("TEI package updater") {
+				public void run() {
+					updateTEIPackage(false); // false ⇒ silent operation
+				}
+			}.start();
+		}
     		installKeyboardShortcuts();
     		// TODO get this working
     		// installDockableWindowLayout();
@@ -244,6 +250,7 @@ public class TEI {
 					"TEI-docking-layout.xml"
 				)
 			);
+			View view =  jEdit.getActiveView();
 			DockableWindowManager manager = view.getDockableWindowManager();
 			DockableWindowManager.DockingLayout layout = manager.getDockingLayout(view.getViewConfig());
 			layout.loadLayout("TEI-docking-layout.xml", layout.NO_VIEW_INDEX);
@@ -358,8 +365,10 @@ public class TEI {
     		String packageLocation = null;
     		try {
     			XdmNode packageMetadataDocument = getDocument(
-    				// TODO use the configuration property instead of the literal URI here
-    				downloadResource("https://www.tei-c.org/release/oxygen/updateSite.oxygen", "package-metadata.xml")
+    				downloadResource(
+    					jEdit.getProperty(TEI_PACKAGE_METADATA_LOCATION_PROPERTY_NAME),
+    					"package-metadata.xml"
+    				)
 			);
 			// declare namespace of Oxygen's "extension" vocabulary
 			xpathCompiler.declareNamespace("xt", "http://www.oxygenxml.com/ns/extension");
@@ -371,9 +380,10 @@ public class TEI {
 			selector.setContextItem(packageMetadataDocument);
 			/// evaluate the XPath as a String value
 			packageLocation = selector.evaluateSingle().getStringValue();
-			String currentPackageLocation = jEdit.getProperty("tei.package-location");
+			String currentPackageLocation = jEdit.getProperty(TEI_PACKAGE_LOCATION_PROPERTY_NAME);
 			debug("Location of latest package", packageLocation);
 			debug("Current TEI package", currentPackageLocation);
+			View view = jEdit.getActiveView();
 			if (packageLocation.equals(currentPackageLocation)) {
 				// package is unchanged, so return null as the location of the package to install
 				packageLocation = null;
@@ -445,7 +455,8 @@ public class TEI {
 	    			debug("TEI package update is required");
 				File teiPackage = downloadResource(packageLocation, "package.zip");
 				unpackPackage(teiPackage);
-				jEdit.setProperty("tei.package-location", packageLocation);
+				// Save the source URL of the currently installed version of the TEI package
+				jEdit.setProperty(TEI_PACKAGE_LOCATION_PROPERTY_NAME, packageLocation);
 			} catch (Exception e) {
 				error("Failed to update TEI package", e);
 				StackTraceElement[] stack = e.getStackTrace();

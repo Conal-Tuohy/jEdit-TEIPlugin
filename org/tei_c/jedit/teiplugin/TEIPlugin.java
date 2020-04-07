@@ -23,9 +23,7 @@ public class TEIPlugin extends EBPlugin {
 	
 	public void start() {
 		super.start();
-		String location=jEdit.getProperty("tei-package-location");
-		// the URL of the currently installed package
-		org.gjt.sp.util.Log.log(org.gjt.sp.util.Log.DEBUG, this, "TEI package location=" + location);
+		TEI.getInstance();
 	}
 	//public static TEI getTEI() {
 	///	return tei;

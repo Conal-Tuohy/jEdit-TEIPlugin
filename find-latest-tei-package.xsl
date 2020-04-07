@@ -8,9 +8,9 @@
 
 	<xsl:template match="/">
 	<!--
-		<xsl:value-of select="concat('tei.package-location=', /xt:extensions/xt:extension[1]/xt:location/@href)"/>
+		<xsl:value-of select="concat('tei.package-archive-url=', /xt:extensions/xt:extension[1]/xt:location/@href)"/>
 		-->
-		<xsl:value-of select="concat('tei.package-location=', /xt:extensions/xt:extension[last()]/xt:location/@href)"/>
+		<xsl:value-of select="concat('tei.package-archive-url=', /xt:extensions/xt:extension[last()]/xt:location/@href)"/>
 	</xsl:template>
 
 </xsl:stylesheet>
