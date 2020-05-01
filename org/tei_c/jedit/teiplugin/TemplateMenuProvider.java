@@ -73,8 +73,9 @@ public class TemplateMenuProvider implements DynamicMenuProvider {
 				buffer.setMode("xml");
 				boolean inserted = buffer.insertFile(view, templateFileName);
 				if (inserted) {
-					// wait for buffer to report that the insertion has finished,
-					// then  move cursor to the end
+					// The insertion actually happens asynchronously, so we have to
+					// wait for the buffer to report that the insertion has finished, before
+					// we move the cursor back to the start of the buffer.
 					buffer.addBufferListener(
 						new BufferAdapter() {
 							@Override
@@ -86,6 +87,7 @@ public class TemplateMenuProvider implements DynamicMenuProvider {
 								int length
 							) {
 								view.getEditPane().getTextArea().goToBufferStart(false); 
+								buffer.removeBufferListener(this);
 							}
 						}
 					);
