@@ -9,47 +9,81 @@
        svn co https://jedit.svn.sourceforge.net/svnroot/jedit/build-support/trunk
   -->
 	<property file="build.properties"/>
-	<property file="../build.properties"/>
-	<property file="TEI.props"/>
-	<property name="src.dir" value="." />
+	<!-- the "package-files" folder contains files which are copied into the TEI plugin's JAR file -->
+	<property name="package-files.dir" value="package-files"/>
+	<!-- One of the package files is the TEI plugin's properties file which is read by jEdit itself, and which contains the default location of the TEI package metadata file
+	which is also used by this build script to download the TEI package and include it in the TEI Plugin's JAR -->
+	<property file="${package-files.dir}/TEI.props"/>
+	<property name="src.dir" value="src" />
 	<property name="user-doc.xml" location="users-guide.xml"/>
-	<import file="${build.support}/plugin-build.xml" />
 	
-	<!-- "build.prepare" target contains extra tasks in preparation for the main "build" target in the "plugin-build.xml" build file -->
-	<target name="build.prepare">
-		<sequential>
-			<!-- find and download the current TEI package from the Consortium -->
-			<mkdir dir="build"/>
-			<!-- retrieve the package metadata file which is a manifest listing the various versions of the actual package -->
-			<get skipexisting="true" src="${options.tei.package-metadata-url}" dest="build/package-metadata.xml"/>
-			<!-- extract the location of the latest package from the metadata file -->
-			<xslt in="build/package-metadata.xml" out="tei-package-location.props" style="find-latest-tei-package.xsl"/>
-			<property file="tei-package-location.props"/>
-			<!-- retrieve the package archive file -->
-			<get skipexisting="true" src="${tei.package-archive-url}" dest="package.zip"/>
-		</sequential>
+	<!-- where files will go    -->
+	<property name="build.dir" value="build" />
+	<property name="build.classes" value="${build.dir}/classes" />
+	<property name="build.javadoc" value="${build.docs}/javadoc" />
+	<property name="build.extras" value="${build.dir}/extras" />
+	<property name="build.lib" value="${build.dir}/lib" />
+	
+	<!-- default compiler flags -->
+	<property name="compiler.debug" value="off" />
+	<property name="compiler.debuglevel" value="lines,vars,source" />
+	<property name="compiler.optimize" value="off" />
+	<property name="compiler.deprecation" value="off" />
+	<property name="compiler.verbose" value="off" />
+	<property name="compiler.nowarn" value="off" />
+	<property name="compiler.listfiles" value="no" />
+	<property name="compiler.fork" value="no" />
+	<property name="compiler.bootclasspath" value="${java.home}/lib/rt.jar"/>
+	<!-- property name="compiler.extdirs"       value="${java.ext.dirs}"/ -->
+	<property name="compiler.userargs" value="" />
+    <property name="install.dir"        value="dist" />
+    <property name="jar.file" value="TEI.jar" />
+	
+	<target name="compile">
+		<mkdir dir="${build.classes}" />
+		<javac destdir="${build.classes}" debug="${compiler.debug}" debuglevel="${compiler.debuglevel}" optimize="${compiler.optimize}" encoding="utf-8" deprecation="${compiler.deprecation}" verbose="${compiler.verbose}" nowarn="${compiler.nowarn}" listfiles="${compiler.listfiles}" fork="${compiler.fork}" bootclasspath="${compiler.bootclasspath}">
+			<src location="${src.dir}" />
+			<compilerarg line="${compiler.userargs}" />
+			<classpath>
+				<fileset dir="lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+		<!-- Also copy (as "resource" files) any non-Java file amongst the Java source files -->
+		<copy todir="${build.classes}">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
 	</target>
-	<path id="project.class.path">
-  <!--
-        <!- External dependencies ->
-        <pathelement path="${jedit.jars}/ant.jar"/>
-        <!- Other plugin dependencies ->
-        -->
-		<pathelement path="${jedit.user.home}/jars/saxon9he.jar"/>
-		<pathelement path="${jedit.user.home}/jars/EclipseIcons.jar"/>
-        <!--
-        <pathelement path="${jedit.user.jars}/Console.jar"/>
-        <pathelement path="${jedit.user.jars}/ErrorList.jar"/>
-        <pathelement path="${jedit.user.jars}/ProjectViewer.jar"/>
-        <pathelement path="${jedit.user.jars}/CommonControls.jar"/>
-        -->
-	</path>
-    
-	<!-- Extra files that should be included in the jar -->
-	<selector id="packageFiles">
-		<or>
-			<filename name="package.zip" />
-            <filename name="TEI-docking-layout.xml" />
-		</or>
-	</selector>
+
+	<target name="build" depends="compile" description="Builds the plugin JAR file">
+
+		<mkdir dir="${build.dir}"/>
+		<delete dir="${build.extras}" failonerror="false" />
+		<mkdir dir="${build.extras}" />
+		<mkdir dir="${install.dir}" />
+		
+		<!-- find and download the current TEI package from the Consortium -->
+		<sequential>			
+			<!-- retrieve the package metadata file which is a manifest listing the various versions of the actual package -->
+			<get skipexisting="true" src="${options.tei.package-metadata-url}" dest="${build.dir}/package-metadata.xml"/>
+			<!-- extract the location of the latest package from the metadata file -->
+			<xslt in="${build.dir}/package-metadata.xml" out="${build.dir}/tei-package-location.props" style="find-latest-tei-package.xsl"/>
+			<delete file="${build.dir}/package-metadata.xml"/>
+			<property file="${build.dir}/tei-package-location.props"/>
+			<delete file="${build.dir}/tei-package-location.props"/>
+			<!-- retrieve the package archive file -->
+			<get skipexisting="true" src="${tei.package-archive-url}" dest="${build.dir}/package.zip"/>
+		</sequential>
+
+		<!-- package the classes and associated data into the TEI Plugin JAR file -->
+		<jar jarfile="${install.dir}/${jar.file}">
+			<file file="${build.dir}/package.zip"/>
+			<fileset dir="${build.classes}" />
+			<fileset dir="${package-files.dir}"/>
+		</jar>
+	</target>
+	
 </project>

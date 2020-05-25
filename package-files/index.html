@@ -1,0 +1,318 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>jEdit TEI Plugin</title>
+		<link rel="home" href="#TEI" title="jEdit TEI Plugin">
+		<link rel="next" href="#introduction" title="Introduction">
+	</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+	<div class="article">
+		<div class="titlepage">
+			<div>
+				<table xmlns="http://www.w3.org/TR/xhtml1/transitional" summary="Header" cellspacing="0" border="0" width="100%" cols="2">
+					<tr width="100%" bgcolor="#CCCCFF">
+						<td valign="TOP">
+							<strong>
+								<font size="+2">jEdit TEI Plugin</font>
+							</strong>
+							<div xmlns="">
+								<p class="copyright">Copyright © 2019 Conal Tuohy</p>
+							</div>
+						</td>
+						<td valign="TOP" align="RIGHT">
+							<font size="-1">
+								<p>
+									<strong>Version 0.1 (May 25 2020)</strong>
+								</p>
+								<p>
+									<span xmlns="" class="author">
+										<span class="firstname">Conal</span>
+										<span class="surname">Tuohy</span>
+									</span>
+								</p>
+							</font>
+						</td>
+					</tr>
+				</table>
+				<div>
+					<div class="legalnotice">
+						<a name="idp2"></a>
+						<p class="legalnotice-title">
+							<b>Legal Notice</b>
+						</p>
+						<p>Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no "Invariant Sections",
+"Front-Cover Texts" or "Back-Cover Texts",
+each as defined in the license. A copy of the license is included in
+the file <code class="filename">COPYING.DOC.txt</code> included with the
+jEdit distribution.</p>
+					</div>
+				</div>
+			</div>
+			<hr></div>
+			<div class="toc">
+				<p>
+					<b>Table of Contents</b>
+				</p>
+				<ul class="toc">
+					<li>
+						<span class="section">
+							<a href="#introduction">Introduction</a>
+						</span>
+					</li>
+					<li>
+						<span class="section">
+							<a href="#actions">Toolbar buttons and keyboard shortcuts</a>
+						</span>
+					</li>
+					<li>
+						<span class="section">
+							<a href="#options">Options</a>
+						</span>
+					</li>
+					<li>
+						<span class="section">
+							<a href="#legal">Legal notices</a>
+						</span>
+					</li>
+					<li>
+						<span class="section">
+							<a href="#feedback">Feedback</a>
+						</span>
+					</li>
+					<li>
+						<span class="appendix">
+							<a href="#feedback">A. Feedback</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+			<div class="section">
+				<div class="titlepage">
+					<div>
+						<div>
+							<table xmlns="http://www.w3.org/TR/xhtml1/transitional" summary="Introduction" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr align="CENTER" width="100%">
+									<td bgcolor="#7FB2FF" width="100%">
+										<strong>
+											<font color="#FFFFFF" size="+1">
+												<span>
+													<a xmlns="" name="introduction"></a>Introduction</span>
+											</font>
+										</strong>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<a class="indexterm" name="idp3"></a>
+				<p>This plugin provides tools for text encoding using an XML vocabulary called
+Text Encoding for Interchange (TEI).</p>
+				<p>For more information about TEI, visit the <a class="ulink" href="https://tei-c.org/" target="_top">website
+of the <span class="orgname">Text Encoding Initiative Consortium</span>
+					</a>. </p>
+				<p>Development of the initial version of the plugin was funded by DARIAH-EU in 2018/2019.</p>
+			</div>
+			<div class="section">
+				<div class="titlepage">
+					<div>
+						<div>
+							<table xmlns="http://www.w3.org/TR/xhtml1/transitional" summary="Toolbar buttons and keyboard shortcuts" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr align="CENTER" width="100%">
+									<td bgcolor="#7FB2FF" width="100%">
+										<strong>
+											<font color="#FFFFFF" size="+1">
+												<span>
+													<a xmlns="" name="actions"></a>Toolbar buttons and keyboard shortcuts</span>
+											</font>
+										</strong>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<p>The TEI toolbar contains the following buttons:</p>
+				<div class="itemizedlist">
+					<ul class="itemizedlist" style="list-style-type: disc; ">
+						<li class="listitem">
+							<p>Click the <span class="guilabel"><strong>Update TEI Package</strong>
+								</span> button or type <strong class="userinput"><code>C+u</code>
+								</strong>
+to manually trigger the download of a package of TEI-related files from the TEI Consortium's website. 
+</p>
+							<p>
+To specify a different location to download the package from,
+see the <a class="link" href="#options" title="Options">options dialog</a>.</p>
+						</li>
+						<li class="listitem">
+							<p>Click the <span class="guilabel"><strong>New TEI file</strong>
+								</span> button, or type <strong class="userinput"><code>C+n</code>
+								</strong>, to
+open a hierarchical menu of TEI template files, provided by the TEI package. 
+Selecti one of the templates to create a new document based on that template.</p>
+						</li>
+						<li class="listitem">
+							<p>Click the <span class="guilabel"><strong>Parse Buffer</strong>
+								</span> button, or type <strong class="userinput"><code>CS+w</code>
+								</strong>, to parse the current buffer. Any schema invalidities will be reported in the <span class="guilabel"><strong>Error List</strong>
+								</span> panel.</p>
+						</li>
+						<li class="listitem">
+							<p>If the cursor is positioned on either an opening or closing tag of an XML element, you can click the <span class="guilabel"><strong>Go to Matching Tag or Bracket</strong>
+								</span> button,r type <strong class="userinput"><code>CS+m</code>
+								</strong>, to move the cursor to the other matching tag; i.e. from the opening to the closing tag, or from the closing tag to the opening tag.</p>
+						</li>
+						<li class="listitem">
+							<p>Click the <span class="guilabel"><strong>Selection between tags</strong>
+								</span> button, or type <strong class="userinput"><code>CS+t</code>
+								</strong> to expand the selected portion of the document to include the content of the parent XML element.</p>
+						</li>
+						<li class="listitem">
+							<p>Click the <span class="guilabel"><strong>Split Tag</strong>
+								</span> button, or type <strong class="userinput"><code>CS+d</code>
+								</strong>, to split the parent XML element in two, at the location of the cursor.</p>
+						</li>
+						<li class="listitem">
+							<p>Click the <span class="guilabel"><strong>Index XML</strong>
+								</span> button, or type <strong class="userinput"><code>CS+p</code>
+								</strong> to indent the XML document.</p>
+						</li>
+					</ul>
+				</div>
+				<p>These operations are also listed in the menu which appears for
+TEI under the <span class="guimenu"><strong>Plugins</strong>
+					</span> heading. </p>
+			</div>
+			<div class="section">
+				<div class="titlepage">
+					<div>
+						<div>
+							<table xmlns="http://www.w3.org/TR/xhtml1/transitional" summary="Options" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr align="CENTER" width="100%">
+									<td bgcolor="#7FB2FF" width="100%">
+										<strong>
+											<font color="#FFFFFF" size="+1">
+												<span>
+													<a xmlns="" name="options"></a>Options</span>
+											</font>
+										</strong>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<a class="indexterm" name="idp65"></a>
+				<p>There are two options which can be set using the pane for
+TEI in the <span class="guilabel"><strong>Plugin Shortcuts</strong>
+					</span> section of the
+general options dialog:</p>
+				<div class="itemizedlist">
+					<ul class="itemizedlist" style="list-style-type: disc; ">
+						<li class="listitem">
+							<p>The <span class="guilabel"><strong>Auto-update TEI package</strong>
+								</span> checkbox causes the TEI Plugin
+to check for updates to the TEI package and download them automatically.</p>
+						</li>
+						<li class="listitem">
+							<p>The <span class="guilabel"><strong>TEI package update URL</strong>
+								</span> field specifies the location of a metadata
+resource which lists the avaiable versions of the TEI package. When the TEI Consortium updates
+this package metadata resource to add a reference to a new package, the TEI Plugin will download and install the new package.</p>
+							<p>This URL can be changed, which can be useful if you are building a new version of the TEI package and want to test it.</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="section">
+				<div class="titlepage">
+					<div>
+						<div>
+							<table xmlns="http://www.w3.org/TR/xhtml1/transitional" summary="Legal notices" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr align="CENTER" width="100%">
+									<td bgcolor="#7FB2FF" width="100%">
+										<strong>
+											<font color="#FFFFFF" size="+1">
+												<span>
+													<a xmlns="" name="legal"></a>Legal notices</span>
+											</font>
+										</strong>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<p>The TEI plugin is released under the GNU General Public
+License (either version 2 or any later version, at the user's option). A
+copy of the GPL is available in the <code class="filename">COPYING.txt</code>
+file in the jEdit distribution.</p>
+				<p>The TEI plugin comes with ABSOLUTELY NO WARRANTY OF ANY
+KIND; see section 11 and 12 of the GPL for details.</p>
+				<p>Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, Version
+1.1 or any later version published by the Free Software Foundation; with
+no "Invariant Sections", "Front-Cover Texts"
+or "Back-Cover Texts", each as defined in the license. A
+copy of the license is included in the file
+<code class="filename">COPYING.DOC.txt</code> included with the jEdit
+distribution.</p>
+			</div>
+			<div class="section">
+				<div class="titlepage">
+					<div>
+						<div>
+							<table xmlns="http://www.w3.org/TR/xhtml1/transitional" summary="Feedback" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr align="CENTER" width="100%">
+									<td bgcolor="#7FB2FF" width="100%">
+										<strong>
+											<font color="#FFFFFF" size="+1">
+												<span>
+													<a xmlns="" name="feedback"></a>Feedback</span>
+											</font>
+										</strong>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<p>Comments, bug reports and other feedback should be posted to <a class="ulink" href="https://github.com/Conal-Tuohy/jEdit-TEIPlugin/issues" target="_top">the TEI plugin's issue tracker</a>.</p>
+			</div>
+			<div class="appendix">
+				<div class="titlepage">
+					<div>
+						<div>
+							<table xmlns="http://www.w3.org/TR/xhtml1/transitional" summary="Feedback" border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr align="CENTER" width="100%">
+									<td bgcolor="#7FB2FF" width="100%">
+										<strong>
+											<font color="#FFFFFF" size="+1">
+												<span>
+													<a xmlns="" name="feedback"></a>A. Feedback</span>
+											</font>
+										</strong>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<p>All jEdit users are encouraged to join the
+<code class="email">&lt;<a class="email" href="mailto:jedit-users@lists.sourceforge.net">jedit-users@lists.sourceforge.net</a>&gt;</code> mailing list to give
+feedback or ask questions to other users and developers. </p>
+				<p>The preferred way to send bug reports against most jEdit plugins
+is to use the <a class="ulink" href="https://sourceforge.net/p/jedit/plugin-bugs/?limit=100" target="_top">
+jEdit Plugin Bugs Tracker</a>. </p>
+				<p>Feature requests can be found on the <a class="ulink" href="https://sourceforge.net/p/jedit/plugin-feature-requests/?limit=100" target="_top">  
+jEdit Plugin feature requests tracker</a>. </p>
+				<p>Development questions should be posted to the jEdit development
+mailing-list <code class="email">&lt;<a class="email" href="mailto:jedit-devel@lists.sourceforge.net">jedit-devel@lists.sourceforge.net</a>&gt;</code>. </p>
+			</div>
+		</div>
+	</body>
+</html>
