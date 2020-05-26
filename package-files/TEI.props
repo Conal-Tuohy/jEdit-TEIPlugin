@@ -13,7 +13,7 @@ plugin.vTEIPlugin.author=Conal Tuohy
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.usePluginHome=true
 
 # plugin version number
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.version=1.0
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.version=1.4
 
 # online help
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.docs=index.html
