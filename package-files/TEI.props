@@ -13,7 +13,7 @@ plugin.vTEIPlugin.author=Conal Tuohy
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.usePluginHome=true
 
 # plugin version number
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.version=0.1
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.version=1.0
 
 # online help
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.docs=index.html
@@ -29,14 +29,17 @@ plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.1=jedit 05.00.99.00
 # specified using "plugin {fully-qualified-class-name} {version}".
 # In other cases, the TEI plugin should specify the dependency using the "OPTIONAL" syntax. 
 # TODO use "OPTIONAL" dependencies if the TEI plugin does not depend on the functionality of the other plugin
+
+# Saxon is used internally to process the TEI package metadata XML file, and recommended anyway for XPath and XSLT processing of TEI
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.2=plugin saxon.SaxonPlugin 9.5.1.1
+# SideKick is used to display the structure of a TEI XML document
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.3=plugin sidekick.SideKickPlugin 1.8
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.4=plugin CommonControlsPlugin 1.7.4
+# XML Plugin is used to parse and validate TEI files
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.4=plugin xml.XmlPlugin 3.0.6
+# Icons used by the toolbar
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.5=plugin eclipseicons.EclipseIconsPlugin 1.0
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.6=plugin antlr.AntlrPlugin 4.5.1
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.7=plugin errorlist.ErrorListPlugin 2.3
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.8=optional plugin buffertabs.BufferTabsPlugin 1.2.4
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.9=plugin xml.XmlPlugin 3.0.6
+# Recommended for editing multiple files
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.6=optional plugin buffertabs.BufferTabsPlugin 1.2.4
 
 
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.description=This plugin provides tooling for working with Text Encoding for Interchange (TEI) XML. Development of the initial version of the plugin was funded by DARIAH-EU in 2018/2019.
