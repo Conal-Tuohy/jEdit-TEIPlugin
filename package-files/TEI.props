@@ -42,7 +42,7 @@ plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.5=plugin eclipseicons.EclipseI
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.6=optional plugin buffertabs.BufferTabsPlugin 1.2.4
 
 
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.description=This plugin provides tooling for working with Text Encoding for Interchange (TEI) XML. Development of the initial version of the plugin was funded by DARIAH-EU in 2018/2019.
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.description=This plugin provides tooling for working with TEI XML files as defined by the Text Encoding Initiative Consortium. Development of the initial version of the plugin was funded by DARIAH-EU in 2018/2019.
 # plugin menu
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.menu.code=org.tei_c.jedit.teiplugin.TEI.getInstance().getTemplateMenuProvider();
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.menu=tei \
