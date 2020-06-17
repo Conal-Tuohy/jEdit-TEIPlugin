@@ -86,4 +86,21 @@
 		</jar>
 	</target>
 	
+	<target name="package" depends="build" description="Builds the package files for Plugin Central">
+		<property name="package-base-name" value="${install.dir}/${plugin.org.tei_c.jedit.teiplugin.TEIPlugin.name}-${plugin.org.tei_c.jedit.teiplugin.TEIPlugin.version}"/>
+		<zip destfile="${package-base-name}.zip" basedir="." excludes="**/*.*~, build/**, dist/**, lib/**"/>
+		<tar destfile="${package-base-name}.tgz" compression="gzip">
+			<zipfileset src="${package-base-name}.zip"/>
+		</tar>
+		<zip destfile="${package-base-name}-bin.zip" basedir="${install.dir}" includes="${jar.file}"/>
+		<tar destfile="${package-base-name}-bin.tgz" compression="gzip">
+			<zipfileset src="${package-base-name}-bin.zip"/>
+		</tar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="build"/>
+		<delete dir="dist"/>
+	</target>
+    
 </project>
