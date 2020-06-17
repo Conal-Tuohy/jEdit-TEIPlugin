@@ -19,10 +19,10 @@ plugin.org.tei_c.jedit.teiplugin.TEIPlugin.version=1.4
 plugin.org.tei_c.jedit.teiplugin.TEIPlugin.docs=index.html
 
 # List dependencies of plugins with .depend.N property suffix:
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.0=jdk 1.6
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.0=jdk 1.8
 
 # See jEdit.getBuild() to understand jEdit's version numbering scheme.
-plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.1=jedit 05.00.99.00
+plugin.org.tei_c.jedit.teiplugin.TEIPlugin.depend.1=jedit 05.05.99.00
 
 # A primary function of the TEI plugin is to define dependencies on a set of other plugins.
 # The TEI plugin may actually call methods of some of these plugins; these plugins must have the dependencies
